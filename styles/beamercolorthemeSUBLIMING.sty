@@ -15,52 +15,53 @@
 
 \mode<presentation>
 
-% Settings
+% 设置各文档部件的颜色
 \setbeamercolor*{title page header}{fg=white}
 \setbeamercolor*{author}{fg=white}
 \setbeamercolor*{date}{fg=white}
 \setbeamercolor{background canvas}{bg=white}
 
-\definecolor{wcprimary}{HTML}{186199} % nupurple (and its variations below)
-\definecolor{wcprimary140}{HTML}{01192C}
-\definecolor{wcprimary130}{HTML}{022A48}
-\definecolor{wcprimary120}{HTML}{053860}
-\definecolor{wcprimary110}{HTML}{0D4A79}
-\definecolor{wcprimary40}{HTML}{3572A0}
-\definecolor{wcprimary30}{HTML}{578DB6}
-\definecolor{wcprimary20}{HTML}{81AFD2}
-\definecolor{wcprimary10}{HTML}{B6D4EB}
+% 提供 beamer 主题的不同风格的选项，以便用户选择
+\DeclareOptionBeamer{style}{\def\beamer@mytheme@style{#1}}
+\ExecuteOptionsBeamer{style=csublue} %default
+\ProcessOptionsBeamer
 
-% Likewise, you can specify the color of alert and example text/boxes
-\definecolor{wcalerted}{RGB}{202, 124, 027} % nudarkorange
-\definecolor{wcexample}{RGB}{000, 134, 086} % nudarkgreen
+\def\beamer@mytheme@stylenupurple{nupurple}%
 
-% The ones below aren't actually used in the inner/outer/color themes.
-% You can still redefine if you wish, but nothing will change
-\definecolor{wcprimary160}{RGB}{029, 002, 053}
-\definecolor{wcprimary150}{RGB}{038, 008, 065}
-\definecolor{wcprimary90}{RGB}{91, 59, 140}
-\definecolor{wcprimary80}{RGB}{104, 076, 150}
-\definecolor{wcprimary70}{RGB}{118, 093, 160}
-\definecolor{wcprimary60}{RGB}{131, 110, 170}
-\definecolor{wcprimary50}{RGB}{147, 128, 182}
+\ifx\beamer@mytheme@style\beamer@mytheme@stylenupurple%
+    % Northwestern University  purple
+    \definecolor{primary}{RGB}{078, 042, 132} % nupurple (and its variations below)
+    \definecolor{primary130}{RGB}{056, 023, 090}
+    \definecolor{primary120}{RGB}{064, 031, 104}
+    \definecolor{primary110}{RGB}{072, 036, 118}
+    \definecolor{primary40}{RGB}{164, 149, 195}
+    \definecolor{primary30}{RGB}{182, 172, 209}
+    \definecolor{primary20}{RGB}{204, 196, 223}
+    \definecolor{primary10}{RGB}{228, 224, 238}
+        % \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantonetwentytwo%
+        % 	% Pantone 2022
+        % 	\definecolor{primaryLight}{HTML}{7470C7}
+        % 	\definecolor{primary}{HTML}{6868AD}
+        % 	\definecolor{secondary}{HTML}{F36F61}
+        % 	\definecolor{tertiary}{HTML}{8AACD4}
+\else% 
+    % Central South University blue (default)
+    \definecolor{primary}{HTML}{186199}
+    \definecolor{primary130}{HTML}{022A48}
+    \definecolor{primary120}{HTML}{053860}
+    \definecolor{primary110}{HTML}{0D4A79}
+    \definecolor{primary40}{HTML}{3572A0}
+    \definecolor{primary30}{HTML}{578DB6}
+    \definecolor{primary20}{HTML}{81AFD2}
+    \definecolor{primary10}{HTML}{B6D4EB}
+    % \fi%
+\fi%
 
-\definecolor{nupurple}{RGB}{078, 042, 132} % Default wcprimary color
-\definecolor{nupurple90}{RGB}{91, 59, 140}
-\definecolor{nupurple80}{RGB}{104, 076, 150}
-\definecolor{nupurple70}{RGB}{118, 093, 160}
-\definecolor{nupurple60}{RGB}{131, 110, 170}
-\definecolor{nupurple50}{RGB}{147, 128, 182}
-\definecolor{nupurple40}{RGB}{164, 149, 195}
-\definecolor{nupurple30}{RGB}{182, 172, 209}
-\definecolor{nupurple20}{RGB}{204, 196, 223}
-\definecolor{nupurple10}{RGB}{228, 224, 238}
-\definecolor{nupurple160}{RGB}{029, 002, 053}
-\definecolor{nupurple150}{RGB}{038, 008, 065}
-\definecolor{nupurple140}{RGB}{048, 016, 078}
-\definecolor{nupurple130}{RGB}{056, 023, 090}
-\definecolor{nupurple120}{RGB}{064, 031, 104}
-\definecolor{nupurple110}{RGB}{072, 036, 118}
+% 定义 csu-blue 风格（default）
+
+\definecolor{alerted}{HTML}{BD3B08} % orange
+\definecolor{example}{RGB}{000, 134, 086} % green
+
 \definecolor{nurichblack}{RGB}{0,0,0}
 \definecolor{nubrightgreen}{RGB}{88,185,71}
 \definecolor{nubrightteal}{RGB}{127, 206, 205}
@@ -78,42 +79,42 @@
 % Enumerate item color 
 \setlist[enumerate]{label={\ifnum\@itemdepth=1\relax
   \color{alerted text}\else
-  \color{wcprimary}\fi\theenumi.}}
+  \color{primary}\fi\theenumi.}}
 
 % Itemize item color (bullet)
-\setlist[itemize]{label=\color{wcprimary}$\bullet$}
-%\setlist[itemize]{label=\color{wcprimary}\textbullet}
+\setlist[itemize]{label=\color{primary}$\bullet$}
+%\setlist[itemize]{label=\color{primary}\textbullet}
 
-% Change alerted text color to wcalerted (default is nudarkorange)
-\setbeamercolor{alerted text}{fg=wcalerted}
+% Change alerted text color to alerted (default is nudarkorange)
+\setbeamercolor{alerted text}{fg=alerted}
 
 % Turn off shading for block title when rounded=true (by default, rounded = false)
 \makeatletter
 \pgfdeclareverticalshading[lower.bg,upper.bg]{bmb@transition}{200cm}{%
   color(0pt)=(lower.bg); color(4pt)=(lower.bg); color(4pt)=(upper.bg)}
 
-% Change block title background to wcprimary and body bg to wcprimary10
-\setbeamercolor{block title}{fg=white,bg=wcprimary}
-\setbeamercolor{block body}{parent=normal text,fg=black,bg=wcprimary10}
+% Change block title background to primary and body bg to primary10
+\setbeamercolor{block title}{fg=white,bg=primary}
+\setbeamercolor{block body}{parent=normal text,fg=black,bg=primary10!55}
 
 % Change the alertblock title background to alerted text color
-\setbeamercolor{block title alerted}{fg=white,bg=wcalerted}
-\setbeamercolor{block body alerted}{fg=black,bg=wcalerted!10}
+\setbeamercolor{block title alerted}{fg=white,bg=alerted}
+\setbeamercolor{block body alerted}{fg=black,bg=alerted!10}
 
 % Change the exampleblock title background to greens
-\setbeamercolor{block title example}{fg=white,bg=wcexample}
-\setbeamercolor{block body example}{fg=black,bg=wcexample!10}
+\setbeamercolor{block title example}{fg=white,bg=example}
+\setbeamercolor{block body example}{fg=black,bg=example!10}
 
-% Change cption text color to wcprimary
-\setbeamercolor{caption name}{fg=wcprimary}
+% Change cption text color to primary
+\setbeamercolor{caption name}{fg=primary}
 
-% Change color of toc text to wcprimary
-\setbeamercolor{section in toc}{fg=wcprimary}
+% Change color of toc text to primary
+\setbeamercolor{section in toc}{fg=primary}
 
 % Ensure continuation text is white (for allowframebreaks)
-\setbeamercolor{frametitle continuation}{fg=wcprimary}
+\setbeamercolor{frametitle continuation}{fg=primary}
 
-% Set framtitle color to wcprimary
-\setbeamercolor{frametitle}{fg=wcprimary}
+% Set framtitle color to primary
+\setbeamercolor{frametitle}{fg=primary}
 
 \mode<all>

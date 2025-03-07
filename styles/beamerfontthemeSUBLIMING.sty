@@ -15,9 +15,9 @@
 
 \mode<presentation>
 
-% Create new font families from OTF & TTF fonts
+% 使用 \newfontfamily 引入西文字体族
 \newfontfamily\Campton[
-    Path=fonts/Campton/,
+    Path=fonts/Campton/, 
     UprightFont = * Light,
     ItalicFont = * Light Italic,
     BoldFont = * Medium,
@@ -25,41 +25,39 @@
     Extension=.otf
 ]{Campton}
 
-% Change title font
+% 设置标题等处的字体
 \setbeamerfont{title}{family=\Campton, series={\bfseries}, size=\LARGE}
 \setbeamerfont{author}{family=\Campton, size=\small}
 \setbeamerfont{frametitle}{family=\Campton, series={\bfseries}, size=\Large}
 \setbeamerfont{section}{family=\Campton, size=\LARGE}
 
-% set chinese font
+% 使用 \setCJKmainfont 设置中文字体族（无衬线体和等宽字体）
 \setCJKmainfont[
     Path = fonts/PingFang/,
     UprightFont = *-Light,
     ItalicFont = *-Thin,
     BoldFont = *-Medium,
-    BoldItalicFont = *-semibold,
+    BoldItalicFont = *-Regular,
     Extension = .ttf
 ]{PingFangSC}
-
 \setCJKsansfont[
     Path = fonts/PingFang/,
     UprightFont = *-Light,
     ItalicFont = *-Thin,
     BoldFont = *-Medium,
-    BoldItalicFont = *-semibold,
+    BoldItalicFont = *-Regular,
     Extension = .ttf
 ]{PingFangSC}
-
 \setCJKmonofont[
     Path = fonts/PingFang/,
     UprightFont = *-Light,
     ItalicFont = *-Thin,
     BoldFont = *-Medium,
-    BoldItalicFont = *-semibold,
+    BoldItalicFont = *-Regular,
     Extension = .ttf
 ]{PingFangSC}
 
-% Set sans font
+% 设置西文无衬线字体族和等宽字体族
 \setsansfont[
     Path = fonts/Akkurat/,
     UprightFont = *Light-Regular,
@@ -68,11 +66,11 @@
     BoldItalicFont = *-Bold,
     Extension = .otf
 ]{AkkuratPro}
-
-% Set mono font
 \setmonofont[
     Path = fonts/Consolas/,
     ItalicFont = *i,
+    BoldFont = *b,
+    BoldItalicFont = *z,
     Extension =.ttf
 ]{consola}
 

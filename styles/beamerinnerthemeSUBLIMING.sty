@@ -15,68 +15,81 @@
 
 \mode<presentation>
 
-% Main pattern: Used in title page and standout frames, plus tblocks
+% 绘制 pattern
+\newcommand{\drawpattern}[4]{
+  % 定义坐标
+  \coordinate (A) at (0,0); % 南西
+  \coordinate (B) at (0,0.9*\the\paperheight); % 西
+  \coordinate (C) at (4.4,0.75*\the\paperheight); % 中西
+  \coordinate (D) at (6.4,0); % 南南西
+  \coordinate (E) at (6.4,\the\paperheight); % 北西
+  \coordinate (F) at (7.7,0); % 南南南西
+  \coordinate (G) at (13.2,0.77*\the\paperheight); % 中东
+  \coordinate (H) at (11.6,0); % 南南南东
+  \coordinate (I) at (\the\paperwidth,0.55*\the\paperheight); % 北东东
+  \coordinate (J) at (\the\paperwidth,0.18*\the\paperheight); % 南东东
+  \coordinate (K) at (12,0); % 南南东
+  \coordinate (L) at (12.8,\the\paperheight); % 北北东
+  \coordinate (M) at (0,\the\paperheight); % 北西
+  \coordinate (N) at (\the\paperwidth,0); % 南东
+  \coordinate (O) at (\the\paperwidth,\the\paperheight); % 北东
+  % 绘制多边形
+  \draw[color=#1,fill=#1, line width=0.05pt] (A) -- (B) -- (C) -- (D) -- cycle;
+  \draw[color=#2,fill=#2, line width=0.05pt] (M) -- (B) -- (C) -- (E) -- cycle;
+  \draw[color=#3,fill=#3, line width=0.05pt] (E) -- (C) -- (D) -- (F) -- (G) -- (L) -- cycle;
+  \draw[color=#4,fill=#4, line width=0.05pt] (F) -- (G) -- (H) -- cycle;
+  \draw[color=#2,fill=#2, line width=0.05pt] (H) -- (G) -- (I) -- (J) -- (K) -- cycle;
+  \draw[color=#1,fill=#1, line width=0.05pt] (K) -- (J) -- (N) -- cycle;
+  \draw[color=#1,fill=#1,  line width=0.05pt] (L) -- (G) -- (I) -- (O) -- cycle;
+}
+
+% 绘制 title page 和 standout frames, 以及 tblocks
 \newcommand{\bgpattern}{
-  \draw[color=wcprimary,fill=wcprimary, line width=0.05pt] (0,0) -- (0,0.9*\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,0) -- cycle;
-  \draw[color=wcprimary110,fill=wcprimary110,, line width=0.05pt] (0,\the\paperheight) -- (0,0.9*\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,\the\paperheight) -- cycle;
-  \draw[color=wcprimary120,fill=wcprimary120, line width=0.05pt] (6.4,\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,0) -- (7.7,0) -- (13.2,0.82*\the\paperheight) -- (12.8,\the\paperheight) -- cycle;
-  \draw[color=wcprimary130,fill=wcprimary130, line width=0.05pt] (7.7,0) -- (13.2,0.82*\the\paperheight) -- (11.6,0) -- cycle;
-  \draw[color=wcprimary110,fill=wcprimary110, line width=0.05pt] (11.6,0) -- (13.2,0.82*\the\paperheight) -- (\the\paperwidth,0.55*\the\paperheight) -- (\the\paperwidth,0.18*\the\paperheight) -- (12,0) -- cycle;
-  \draw[color=wcprimary,fill=wcprimary, line width=0.05pt] (12,0) -- (\the\paperwidth,0.18*\the\paperheight) -- (\the\paperwidth,0) -- cycle;
-  \draw[color=wcprimary,fill=wcprimary,  line width=0.05pt] (12.8,\the\paperheight) -- (13.2,0.82*\the\paperheight) -- (\the\paperwidth,0.55*\the\paperheight) -- (\the\paperwidth,\the\paperheight) -- cycle;
+  \drawpattern{primary}{primary110}{primary120}{primary130}
 }
 
-% Make a light version for section pages
+% 绘制浅色版本用于制作 section pages
 \newcommand{\bgpatternlight}{
-  \draw[color=wcprimary10!30,fill=wcprimary10!30, line width=0.05pt] (0,0) -- (0,0.9*\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,0) -- cycle;
-  \draw[color=wcprimary20!30,fill=wcprimary20!30, line width=0.05pt] (0,\the\paperheight) -- (0,0.9*\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,\the\paperheight) -- cycle;
-  \draw[color=wcprimary30!30,fill=wcprimary30!30, line width=0.05pt] (6.4,\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,0) -- (7.7,0) -- (13.2,0.82*\the\paperheight) -- (12.8,\the\paperheight) -- cycle;
-  \draw[color=wcprimary40!30,fill=wcprimary40!30, line width=0.05pt] (7.7,0) -- (13.2,0.82*\the\paperheight) -- (11.6,0) -- cycle;
-  \draw[color=wcprimary20!30,fill=wcprimary20!30, line width=0.05pt] (11.6,0) -- (13.2,0.82*\the\paperheight) -- (\the\paperwidth,0.55*\the\paperheight) -- (\the\paperwidth,0.18*\the\paperheight) -- (12,0) -- cycle;
-  \draw[color=wcprimary10!30,fill=wcprimary10!30, line width=0.05pt] (12,0) -- (\the\paperwidth,0.18*\the\paperheight) -- (\the\paperwidth,0) -- cycle;
-  \draw[color=wcprimary10!30,fill=wcprimary10!30,  line width=0.05pt] (12.8,\the\paperheight) -- (13.2,0.82*\the\paperheight) -- (\the\paperwidth,0.55*\the\paperheight) -- (\the\paperwidth,\the\paperheight) -- cycle;
+  \drawpattern{primary10!30}{primary20!30}{primary30!30}{primary40!30}
 }
 
-% Make a color-specific version for tblocks that aren't purple. This accepts one
-% argument, the color.
+% 绘制特殊颜色版本用来制作和主题色不一样的 tblocks
 \newcommand{\bgpatternblock}[1]{
-  \draw[color=#1,fill=#1, line width=0.05pt] (0,0) -- (0,0.9*\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,0) -- cycle;
-  \draw[color=#1!110,fill=#1!110,, line width=0.05pt] (0,\the\paperheight) -- (0,0.9*\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,\the\paperheight) -- cycle;
-  \draw[color=#1!120,fill=#1!120, line width=0.05pt] (6.4,\the\paperheight) -- (4.4,0.75*\the\paperheight) -- (6.4,0) -- (7.7,0) -- (13.2,0.82*\the\paperheight) -- (12.8,\the\paperheight) -- cycle;
-  \draw[color=#1!130,fill=#1!130, line width=0.05pt] (7.7,0) -- (13.2,0.82*\the\paperheight) -- (11.6,0) -- cycle;
-  \draw[color=#1!110,fill=#1!110, line width=0.05pt] (11.6,0) -- (13.2,0.82*\the\paperheight) -- (\the\paperwidth,0.55*\the\paperheight) -- (\the\paperwidth,0.18*\the\paperheight) -- (12,0) -- cycle;
-  \draw[color=#1,fill=#1, line width=0.05pt] (12,0) -- (\the\paperwidth,0.18*\the\paperheight) -- (\the\paperwidth,0) -- cycle;
-  \draw[color=#1,fill=#1,  line width=0.05pt] (12.8,\the\paperheight) -- (13.2,0.82*\the\paperheight) -- (\the\paperwidth,0.55*\the\paperheight) -- (\the\paperwidth,\the\paperheight) -- cycle;
+  \drawpattern{#1}{#1!110}{#1!120}{#1!130}
 }
 
-% Set the background template
+% 背景模板
 \setbeamertemplate{background}{
     \begin{tikzpicture}
     \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-    % Add main pattern only on the cover page
+
+    % 只给封面添加背景
     \ifnum\thepage=1
       \bgpattern
-      \node[opacity=0.3] at (0.9*\the\paperwidth,0.5*\the\paperheight) {\includegraphics[width=8cm]{assets/csu-logo.pdf}};
-      % Add the logo if \titlegraphic is not blank
+
+      % 如果有学校 logo , 则在封面上添加
       \ifx\inserttitlegraphic\@empty\relax
       \else
-        \node[anchor=west,inner sep=0] at (0.05*\the\paperwidth,0.89*\the\paperheight) {\inserttitlegraphic};
+        % 下面被注释的这一行是将 logo 放在封面左上角，适合校徽，如果需要可以取消注释
+        % \node[anchor=west,inner sep=0] at (0.05*\the\paperwidth,0.89*\the\paperheight) {\inserttitlegraphic};
+        % 下面这一行是将 logo 放在封面右侧，适合校标，如果需要改为四字校徽可以注释掉
+        \node[opacity=0.3] at (0.9*\the\paperwidth,0.5*\the\paperheight) {\inserttitlegraphic};
       \fi
     \else
-      % Plain white background for every other page
+      % 空白页背景
       \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
     \fi
-    % If the frame specifies [plain] as an option, draw a full white background
+    % 如果使用了 [plain] 选项，执行下面的代码
     \ifbeamer@plainframe
       \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
     \fi
   \end{tikzpicture}
 }
 
-% Set the title page text positioning
+% 标题页文本位置
 \defbeamertemplate*{title page}{wildcat}[1][]
 { 
-% Clear the headline/footline template
+% 清除 headline/footline 模板
 \setbeamertemplate{headline}{} 
 \setbeamertemplate{footline}{}
 \setbeamertemplate{navigation symbols}{}   
@@ -96,7 +109,7 @@
 \vfill
 }
 
-% Generate a section page whenever \section{} is called
+% section page 的模板
 \AtBeginSection[]{
   {\setbeamertemplate{background}{
     \begin{tikzpicture}
@@ -104,19 +117,19 @@
       \bgpatternlight
     \end{tikzpicture}
   }
-  \setbeamertemplate{headline}{} % Remove header
-  \setbeamertemplate{footline}{} % Remove footer
+  \setbeamertemplate{headline}{} % 移除 header
+  \setbeamertemplate{footline}{} % 移除 footer
   \begin{frame}
     \vfill
     \vskip4cm%
     \begin{beamercolorbox}[sep=8pt,left,shadow=false,rounded=false]{title}
-      {\color{wcprimary}\raggedright\usebeamerfont{section}\insertsectionhead\par}%
+      {\color{primary}\raggedright\usebeamerfont{section}\insertsectionhead\par}%
     \end{beamercolorbox}
   \end{frame}
   }
 }
 
-% Create special blocks for alerts, examples, and facets
+% 三种特殊的文本盒子 talerts, texamples 以及 tfacets
 \newtcolorbox{tblock}[1]{
   enhanced,
   underlay={
@@ -127,46 +140,43 @@
   },
   overlay={
     \begin{tcbclipinterior}
-      \fill[wcprimary10] (frame.south west) rectangle (frame.north east);
+      \fill[primary10!55] (frame.south west) rectangle (frame.north east);
     \end{tcbclipinterior}
   },
   title=#1
 }
-
 \newtcolorbox{talert}[1]{
   enhanced,
   underlay={
     \begin{tcbclipframe}
         \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-        \bgpatternblock{wcalerted}  
+        \bgpatternblock{alerted}  
     \end{tcbclipframe}
   },
   overlay={
     \begin{tcbclipinterior}
-      \fill[wcalerted!10] (frame.south west) rectangle (frame.north east);
+      \fill[alerted!10] (frame.south west) rectangle (frame.north east);
     \end{tcbclipinterior}
   },
   title=#1
 }
-
 \newtcolorbox{texample}[1]{
   enhanced,
   underlay={
     \begin{tcbclipframe}
         \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
-        \bgpatternblock{wcexample}  
+        \bgpatternblock{example}  
     \end{tcbclipframe}
   },
   overlay={
     \begin{tcbclipinterior}
-      \fill[wcexample!10] (frame.south west) rectangle (frame.north east);
+      \fill[example!10] (frame.south west) rectangle (frame.north east);
     \end{tcbclipinterior}
   },
   title=#1
 }
-
-% And a general facet block which takes a second (optional) argument for the color
-\newtcolorbox{tfacetbox}[2][wcprimary]{
+% 含颜色双选项 facet block
+\newtcolorbox{tfacetbox}[2][primary]{
   enhanced,
   underlay={
     \begin{tcbclipframe}
@@ -182,9 +192,8 @@
   title=#2
 }
 
-% Standout Frame
-% Create a standout frame for important points. It should be blank, with the body 
-% text centered vertically and horizontally. There should be no title
+% 标准页 Standout Frame
+% 对重点创建无标题 standout frame，内容居中
 \newcommand{\standout}[1]{
     {
         \setbeamertemplate{background}{
@@ -197,7 +206,7 @@
         \begin{frame}
             \vfill
             \begin{beamercolorbox}[sep=8pt,center,shadow=false,rounded=false]{title}
-                {\color{wcprimary10}\usebeamerfont{section}#1\par}
+                {\color{primary10}\usebeamerfont{section}#1\par}
             \end{beamercolorbox}
         \end{frame}
     }

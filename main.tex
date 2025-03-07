@@ -2,12 +2,18 @@
 \usepackage[T1]{fontenc}
 
 \title{Subliming 主题 Beamer 示例}
-\author{杨曜堃}
+\author{杨曜堃\ \ 地球科学与信息物理学院}
 \date{February 19, 2025}
+
+% 添加封面上的大学校标，这里使用的是白色中南大学校标，并设置透明度为 30%
+% 如果你想使用校徽，可以在 beamerinnerthemeSUBLIMING.sty 文件中修改，找到对应的注释即可
+% 我的意思是，四个字的那种叫校徽，圆圆的那个叫校标
+\titlegraphic{\includegraphics[width=8cm]{assets/csu-logo.pdf}}
 
 \usepackage{styles/SUBLIMINGmacros}
 \usefolder{styles}
-\usetheme[style=csublue]{SUBLIMING}
+\usetheme[style=csublue]{SUBLIMING} % 在这里更换颜色主题风格
+% 支持 csu blue 和 nupurple 两种风格
 
 \begin{document}
 
@@ -16,16 +22,57 @@
     \end{frame}
 
     \begin{frame}{介绍 Introduction}
-        Subliming 主题是一个为中南大学设计的 Beamer 主题，也可以通过调整模板中的颜色、字体和背景适应其他大学的风格。 
+        Subliming 主题是一个为中南大学设计的 Beamer 主题，也可以通过调整模板中的颜色、字体和背景以适应其他大学的风格。 
         \\ ~ \\
-        这个主题是在 Northwestern University 的 Aaron Wolf 制作的 \href{https://github.com/aarondwolf/wildcatwildcat}{Wildcat} 主题的基础上修改设计的。同其一样，Subliming 主题也遵循 GNU 通用公共许可证，这意味着可以免费自由使用以及修改这个主题。
+        这个主题是在 Northwestern University 的 Aaron Wolf 制作的 \href{https://github.com/aarondwolf/wildcatwildcat}{Wildcat} 主题的基础上修改设计的，更适合国内高校。同其一样，Subliming 主题也遵循 \href{http://www.gnu.org/licenses/}{GNU 通用公共许可证}，这意味着任何人都可以免费自由使用这个主题！
+        \\ ~ \\
+        你也可以自定义这个主题！我在各个包中增加了中文注释，以便你更好地理解这个主题的设计。如果有任何问题或建议，欢迎向我们的 \href{https://github.com/PourRevenir/Subliming}{GitHub 仓库}提交 \href{https://github.com/PourRevenir/Subliming/issues}{issue} 或 \href{https://github.com/PourRevenir/Subliming/pulls}{pull request}！
     \end{frame}
 
     \begin{frame}{目录 Contents}
         \tableofcontents
     \end{frame}
 
-    \section{Section 1 颜色和样式}
+    \section{1 颜色和样式}
+
+    \begin{frame}{彩色盒子示例 (tcolorbox)}
+        这里提供了三种彩色盒子，你可以通过 \texttt{\textbackslash begin\{tblock\}} 环境创建. 你也可以使用 \texttt{talert} 和 \texttt{texample} 这两种环境分别生成其他颜色的盒子。
+        \begin{tblock}{定理}
+            这里是一个彩色盒子，颜色将和主题色一致。
+        \end{tblock}
+        \begin{talert}{说明}
+            这里是一个说明，你也可以动手修改，比如制作一个可以自动编号的定理环境。
+        \end{talert}
+        \begin{texample}{例 1-1}
+            这里是一个例子，其实只是一个绿色盒子。
+        \end{texample}
+    \end{frame}
+
+    \begin{frame}[fragile]{可自定义颜色的盒子示例 (Facetbox)}
+        使用\texttt{tfacetbox} 可以自定义盒子的颜色。 这只适用于非原色（红、绿、蓝），因为不容易进行阴影处理。
+        \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
+            这是一个 tfacetbox 盒子. 可通过以下代码创建:
+            \begin{verbatim}
+    \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
+        这是一个 tfacetbox 盒子...
+    \end{tfacetbox}
+            \end{verbatim}
+        \end{tfacetbox}
+    \end{frame}
+
+    \begin{frame}
+        \frametitle{彩色盒子示例 (Default)}
+        你也可以使用 Beamer 提供的默认文本盒子。默认样式没有圆角和阴影。
+        \begin{block}{蓝色}
+            这里是一个蓝色盒子
+        \end{block}
+        \begin{alertblock}{红色}
+            这里是一个红色盒子
+        \end{alertblock}
+        \begin{exampleblock}{绿色}
+            这里是一个绿色盒子
+        \end{exampleblock}
+        \end{frame}
 
     % \begin{frame}
     %     \frametitle{颜色 Colors}
@@ -138,45 +185,6 @@
     %         \end{verbatim}
     %     \end{tblock}
     % \end{frame}
-
-    % \begin{frame}{Facet Blocks (tcolorbox)}
-    %     You can use tcolorbox style blocks with the facet pattern instead of the default beamer blocks. You can create this with a \texttt{\textbackslash begin\{tblock\}} environment. You can also use \texttt{talert} and \texttt{texample} for alert and example blocks, respectively.
-    %     \begin{tblock}{T Block Title}
-    %         This is a tcolorbox style block.
-    %     \end{tblock}
-    %     \begin{talert}{T Alert Title}
-    %         This is a tcolorbox style alert block.
-    %     \end{talert}
-    %     \begin{texample}{T Example Title}
-    %         This is a tcolorbox style example block.
-    %     \end{texample}
-    % \end{frame}
-
-    % \begin{frame}[fragile]{Custom Color Facet Blocks}
-    %     There is also a special block called \texttt{tfacetbox} which allows you to specify the color. This only works with non-primary (not red, green, or blue) colors, as you can't shade those easily.
-    %     \begin{tfacetbox}[nudarkyellow]{Custom Facet Block Title}
-    %         This is a tfacetbox block. It can be created with the following code:
-    %         \begin{verbatim}
-    % \begin{tfacetbox}[nudarkyellow]{Custom Facet Block Title}
-    %     This is a tfacetbox block...
-    % \end{tfacetbox}
-    %         \end{verbatim}
-    %     \end{tfacetbox}
-    % \end{frame}
-
-    % \begin{frame}
-    %     \frametitle{Box Examples (Default)}
-    %     You can also just use the Beamer default blocks in the usual way. The default is non-rounded corners, non-shaded.
-    %     \begin{block}{Main Block}
-    %     This is an example block
-    %     \end{block}
-    %     \begin{alertblock}{Alert Box}
-    %     This is an alert box
-    %     \end{alertblock}
-    %     \begin{exampleblock}{Example Box}
-    %         This is an example box
-    %     \end{exampleblock}
-    %     \end{frame}
 
     % \begin{frame}{Font Style: Default}
     %     The theme uses the official Northwestern fonts, which are Campton (for titles) and Akkurat Pro (for copy). These are not free fonts, so you will need to purchase (and install) them if you want to use them.
