@@ -28,6 +28,11 @@
 
 \def\beamer@mytheme@stylenupurple{nupurple}%
 \def\beamer@mytheme@stylehnured{hnured}%
+\def\beamer@mytheme@stylepantonea{pantone2018}%
+\def\beamer@mytheme@stylepantonee{pantone2019}%
+\def\beamer@mytheme@stylepantoneb{pantone2021a}%
+\def\beamer@mytheme@stylepantonec{pantone2021b}%
+\def\beamer@mytheme@stylepantoned{pantone2022}%
 
 \ifx\beamer@mytheme@style\beamer@mytheme@stylenupurple%
     % 定义 Northwestern University 风格 (purple)
@@ -38,7 +43,11 @@
     \definecolor{primary40}{RGB}{164, 149, 195}
     \definecolor{primary30}{RGB}{182, 172, 209}
     \definecolor{primary20}{RGB}{204, 196, 223}
-    \definecolor{primary10}{RGB}{228, 224, 238}       \else\ifx\beamer@mytheme@style\beamer@mytheme@stylehnured%
+    \definecolor{primary10}{RGB}{228, 224, 238}
+    
+    \definecolor{alerted}{RGB}{202, 124, 027}
+    \definecolor{example}{RGB}{000, 134, 086}
+    \else\ifx\beamer@mytheme@style\beamer@mytheme@stylehnured%
         % 定义 hnu-red 风格 (red) 
         \definecolor{primary}{HTML}{A00000}
         \definecolor{primary130}{HTML}{800000}
@@ -48,24 +57,96 @@
         \definecolor{primary30}{HTML}{C05050}
         \definecolor{primary20}{HTML}{D07070}
         \definecolor{primary10}{HTML}{E0A0A0}
-        \else%
-        % 定义 csu-blue 风格（default）
-        \definecolor{primary}{HTML}{186199}
-        \definecolor{primary130}{HTML}{022A48}
-        \definecolor{primary120}{HTML}{053860}
-        \definecolor{primary110}{HTML}{0D4A79}
-        \definecolor{primary40}{HTML}{3572A0}
-        \definecolor{primary30}{HTML}{578DB6}
-        \definecolor{primary20}{HTML}{81AFD2}
-        \definecolor{primary10}{HTML}{B6D4EB}
+
+        \definecolor{alerted}{HTML}{C06112}
+        \definecolor{example}{HTML}{0B7373}
+        \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantonee%
+            % 定义 pantone 2019 风格
+		    \definecolor{primary}{HTML}{F36F63}
+            \definecolor{primary130}{HTML}{910408}
+            \definecolor{primary120}{HTML}{B2191E}
+            \definecolor{primary110}{HTML}{D6483D}
+            \definecolor{primary40}{HTML}{FF958C}
+            \definecolor{primary30}{HTML}{FFBCB7}
+            \definecolor{primary20}{HTML}{FFD9D7}
+            \definecolor{primary10}{HTML}{FFF0EF}
+            
+            \definecolor{alerted}{HTML}{F7D92D}
+            \definecolor{example}{HTML}{9CD9DA}
+            \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantonea%
+                % 定义 pantone 2018 风格
+                \definecolor{primary}{HTML}{8262AC}
+                \definecolor{primary130}{HTML}{371565}
+                \definecolor{primary120}{HTML}{4C277C}
+                \definecolor{primary110}{HTML}{644193}
+                \definecolor{primary40}{HTML}{AA90CC}
+                \definecolor{primary30}{HTML}{D2C2E7}
+                \definecolor{primary20}{HTML}{EEE7F8}
+                \definecolor{primary10}{HTML}{FEFEFF}
+
+                \definecolor{alerted}{HTML}{F49863}
+                \definecolor{example}{HTML}{BDD391}
+                \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantoneb%    % 定义 pantone 2021a 风格
+                    \definecolor{primary}{HTML}{0283B1}
+                    \definecolor{primary130}{HTML}{00394F}
+                    \definecolor{primary120}{HTML}{014C69}
+                    \definecolor{primary110}{HTML}{016388}
+                    \definecolor{primary40}{HTML}{06A5E1}
+                    \definecolor{primary30}{HTML}{28AADB}
+                    \definecolor{primary20}{HTML}{4DB9E2}
+                    \definecolor{primary10}{HTML}{79CBEA}
+                
+                    \definecolor{alerted}{HTML}{D25C78}
+                    \definecolor{example}{HTML}{949398}
+                    \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantonec%
+                        % 定义 pantone 2021b 风格
+                        \definecolor{primary}{HTML}{AE95CC}
+                        \definecolor{primary130}{HTML}{4D2978}
+                        \definecolor{primary120}{HTML}{65428F}
+                        \definecolor{primary110}{HTML}{8667AC}
+                        \definecolor{primary40}{HTML}{D3C3E6}
+                        \definecolor{primary30}{HTML}{F1EBF8}
+                        \definecolor{primary20}{HTML}{FEFEFF}
+                        \definecolor{primary10}{HTML}{FFFFFF}
+                        
+                        \definecolor{alerted}{HTML}{D4B657}
+                        \definecolor{example}{HTML}{B4CC54}
+                        \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantoned%
+                            % 定义 pantone 2022 风格
+                            \definecolor{primary}{HTML}{6868AD}
+                            \definecolor{primary130}{HTML}{181860}
+                            \definecolor{primary120}{HTML}{2D2D79}
+                            \definecolor{primary110}{HTML}{464692}
+                            \definecolor{primary40}{HTML}{9494CB}
+                            \definecolor{primary30}{HTML}{C4C4E6}
+                            \definecolor{primary20}{HTML}{E7E7F7}
+                            \definecolor{primary10}{HTML}{FDFDFF}
+                            
+                            \definecolor{alerted}{HTML}{F36F61}
+                            \definecolor{example}{HTML}{8AACD4}
+                            \else
+                            % 定义 csu-blue 风格（default）
+                            \definecolor{primary}{HTML}{186199}
+                            \definecolor{primary130}{HTML}{022A48}
+                            \definecolor{primary120}{HTML}{053860}
+                            \definecolor{primary110}{HTML}{0D4A79}
+                            \definecolor{primary40}{HTML}{3572A0}
+                            \definecolor{primary30}{HTML}{578DB6}
+                            \definecolor{primary20}{HTML}{81AFD2}
+                            \definecolor{primary10}{HTML}{B6D4EB}
+
+                            \definecolor{alerted}{HTML}{BD3B08}
+                            \definecolor{example}{HTML}{5D9C95}
+                            \fi%
+                        \fi%
+                    \fi%
+                \fi%
+            \fi%
         \fi%
 \fi%
 
 \definecolor{background}{HTML}{FFFFFF}
 \definecolor{Gray}{HTML}{858b8f}
-
-\definecolor{alerted}{HTML}{BD3B08} % orange
-\definecolor{example}{RGB}{000, 134, 086} % green
 
 \definecolor{nurichblack}{RGB}{0,0,0}
 \definecolor{nubrightgreen}{RGB}{88,185,71}

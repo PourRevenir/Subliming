@@ -14,7 +14,6 @@
 \usepackage{styles/SUBLIMINGmacros}
 \usefolder{styles}
 \usetheme[style=csublue, cover=facet]{SUBLIMING} % 在这里更换颜色主题风格
-% 支持 csublue 和 nupurple 两种风格
 
 \begin{document}
 
@@ -49,9 +48,14 @@
         目前内置的颜色风格包括：
 
        \begin{itemize}
-            \item \textcolor[HTML]{186199}{中南蓝 csublue}
-            \item \textcolor[RGB]{078, 042, 132}{西北紫 nupurple}
-            \item \textcolor[HTML]{A00000}{湖大红 hnured}
+            \item \textcolor[HTML]{186199}{中南蓝 [csublue]}
+            \item \textcolor[RGB]{078, 042, 132}{西北紫 [nupurple]}
+            \item \textcolor[HTML]{A00000}{湖大红 [hnured]}
+            \item \textcolor[HTML]{8262AC}{Pantone 2018 紫外光紫 [pantone2018]}
+            \item \textcolor[HTML]{F36F63}{Pantone 2019 活珊瑚橘 [pantone2019]}
+            \item \textcolor[HTML]{0283B1}{潘通    Pantone 2021 A [pantone2021a]}
+            \item \textcolor[HTML]{AE95CC}{潘通    Pantone 2021 B [pantone2021]b}
+            \item \textcolor[HTML]{6868AD}{潘通    Pantone 2022 长春花蓝 [pantone2022]}
         \end{itemize}  
        
     \end{frame}
@@ -90,7 +94,7 @@
                 \item \textbf{\textit{粗斜体}}
             \end{itemize}
         \end{columns}
-        \vspace*{0.5cm}
+        \vspace*{1em}
         参考文献引用：\cite{Mosher2013} \cite{Asgharzadeh2008} 
     \end{frame}
 
@@ -352,7 +356,8 @@
     \section{5 参考文献}
 
     \begin{frame}[allowframebreaks,noframenumbering]{参考文献 References}
-        参考文献列表的样式可以通过修改 \texttt{SUBLIMING.bst} 文件来实现。
+        参考文献列表的样式如下，需要使用 Biber 编译。 建议设置编译方式为 XeLaTeX $\to$ Biber $\to$ XeLaTeX $\to$ XeLaTeX。
+        \vspace*{1em}
         \bibliographystyle{SUBLIMING} 
         \bibliography{references}
     \end{frame}
