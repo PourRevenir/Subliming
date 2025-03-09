@@ -61,6 +61,9 @@
         \fi%
 \fi%
 
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{Gray}{HTML}{858b8f}
+
 \definecolor{alerted}{HTML}{BD3B08} % orange
 \definecolor{example}{RGB}{000, 134, 086} % green
 
@@ -71,19 +74,19 @@
 \definecolor{nubrightyellow}{RGB}{237, 233, 59}
 \definecolor{nubrightorange}{RGB}{255, 197, 32}
 \definecolor{nubrightred}{RGB}{239, 085, 063}
-\definecolor{nudarkgreen}{RGB}{000, 134, 086} % Default wcexample color
+\definecolor{nudarkgreen}{RGB}{000, 134, 086}
 \definecolor{nudarkteal}{RGB}{000, 127, 164}
 \definecolor{nudarkblue}{RGB}{013, 045, 108}
 \definecolor{nudarkyellow}{RGB}{217, 200, 038}
-\definecolor{nudarkorange}{RGB}{202, 124, 027} % Default wcalerted color
+\definecolor{nudarkorange}{RGB}{202, 124, 027} 
 \definecolor{nudarkred}{RGB}{216, 088, 032}
 
-% Enumerate item color 
+% 有序列表 item 颜色 
 \setlist[enumerate]{label={\ifnum\@itemdepth=1\relax
   \color{alerted text}\else
   \color{primary}\fi\theenumi.}}
 
-% Itemize item color (bullet)
+% 无序列表 item 颜色 (bullet)
 \setlist[itemize]{label=\color{primary}$\bullet$}
 
 \setbeamercolor{alerted text}{fg=alerted}
@@ -105,5 +108,17 @@
 \setbeamercolor{frametitle continuation}{fg=primary}
 \setbeamercolor{frametitle}{fg=primary}
 \setbeamercolor{description item}{fg=primary}
+
+\setbeamercolor*{background canvas}{bg=background}
+\setbeamercolor*{footer}{fg=Gray!50}
+\setbeamercolor*{footer text}{fg=Gray}
+\setbeamercolor*{header title}{fg=primary40!10}
+\setbeamercolor*{header primary}{fg=white,bg=primary40}
+\setbeamercolor*{header secondary}{fg=white,bg=primary}
+\setbeamercolor*{header tertiary}{fg=white,bg=background}
+\setbeamercolor*{secondary}{fg=alerted!10,bg=alerted}
+
+% Bibliography
+\setbeamercolor*{bibliography entry author}{fg=primary}
 
 \mode<all>

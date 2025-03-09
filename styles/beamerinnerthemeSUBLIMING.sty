@@ -146,7 +146,124 @@
   }
 }
 
-% 三种特殊的文本盒子 talerts, texamples 以及 tfacets
+% 重写 block 环境
+\def\beamer@blockstylenative{native}%
+\def\beamer@blockstylenobackground{nobackground}%
+\def\beamer@blockstylemetropolis{metropolis}%
+\def\beamer@blockstyleemph{emph}%
+
+\newcommand{\setblockstyle}[1]{
+	\def\beamer@blockstyle{#1}
+	\ifx\beamer@blockstyle\beamer@blockstylenobackground%
+		\setbeamercolor{block title}{fg= primary40,bg=background}%
+   		\setbeamercolor{block body}{bg=background}%
+   		\setbeamercolor{block title alerted}{fg=alerted,bg=background}%
+   		\setbeamercolor{block body alerted}{bg=background}%
+   		\setbeamercolor{block title example}{fg=example,bg=background}%
+  		\setbeamercolor{block body example}{bg=background}%
+		% tbox color theme
+		\setbeamercolor{default}{fg= primary40,bg=background}%
+   		\setbeamercolor{alerted}{fg=alerted,bg=background}%
+   		\setbeamercolor{example}{fg=example,bg=background}%
+		
+	\else\ifx\beamer@blockstyle\beamer@blockstylemetropolis%
+		\setbeamercolor{block title}{use=normal text,fg=primary40,bg=normal text.bg!90!fg}
+		\setbeamercolor{block body}{use={block title, normal text},bg=block title.bg!50!normal text.bg}  
+		\setbeamercolor{block title alerted}{fg=alerted,bg=normal text.bg!90!fg}
+		\setbeamercolor{block body alerted}{use={block title, normal text},bg=block title.bg!50!normal text.bg}  
+		\setbeamercolor{block title example}{fg=example,bg=normal text.bg!90!fg}
+	    	\setbeamercolor{block body example}{use={block title, normal text},bg=block title.bg!50!normal text.bg}
+		% tbox color theme
+		\setbeamercolor{default}{use={block title, normal text},fg=primary40,bg=block title.bg!50!normal text.bg}
+		\setbeamercolor{alerted}{use={block title, normal text},fg=alerted,bg=block title.bg!50!normal text.bg}
+		\setbeamercolor{example}{use={block title, normal text},fg=example,bg=block title.bg!50!normal text.bg}
+
+	\else\ifx\beamer@blockstyle\beamer@blockstyleemph%
+    	\setbeamercolor{block title}{bg=primary40, fg=background}%
+   		\setbeamercolor{block body}{bg=primary40, fg=background}%
+   		\setbeamercolor{block title alerted}{bg=alerted!80, fg=background}%
+   		\setbeamercolor{block body alerted}{bg=alerted!80, fg=background}%
+   		\setbeamercolor{block title example}{bg=example!80, fg=background}%
+   		\setbeamercolor{block body example}{bg=example!80, fg=background}%
+		% tbox color theme
+    		\setbeamercolor{default}{bg=primary40, fg=background}%
+   		\setbeamercolor{alerted}{bg=alerted!80, fg=background}%
+   		\setbeamercolor{example}{bg=example!80, fg=background}%
+
+    	\else% 
+    	\setbeamercolor{block title}{bg=primary40, fg=background}%
+   		\setbeamercolor{block body}{bg=normal text.bg!94!fg}%
+   		\setbeamercolor{block title alerted}{bg=alerted!80, fg=background}%
+   		\setbeamercolor{block body alerted}{bg=normal text.bg!94!fg}%
+   		\setbeamercolor{block title example}{bg=example, fg=background}%
+   		\setbeamercolor{block body example}{bg=normal text.bg!94!fg}%
+		% tbox color theme
+   		\setbeamercolor{default}{bg=primary40, fg=background}%
+   		\setbeamercolor{alerted}{bg=alerted!80, fg=background}%
+   		\setbeamercolor{example}{bg=example, fg=background}%
+    \fi
+\fi%
+\fi
+}
+
+% tbox 环境
+\usepackage{ragged2e}% For two-side alignment in box
+% Remove font dependency of blocks
+\setbeamertemplate{block begin}
+{
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{block title}
+    \usebeamerfont*{block title}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title}
+  {}
+  {\justifying\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[colsep*=2mm,vmode]{block body}%
+    \justifying\ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+
+\setbeamertemplate{block example begin}
+{
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{block title example}
+    \usebeamerfont*{block title example}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title example}
+  {}
+  {\justifying\ifbeamercolorempty[bg]{block body example}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body example}%
+  \begin{beamercolorbox}[colsep*=2mm,vmode]{block body example}%
+    \justifying\ifbeamercolorempty[bg]{block body example}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+
+\setbeamertemplate{block alerted begin}
+{
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{block title alerted}
+    \usebeamerfont*{block title alerted}\insertblocktitle%
+  \end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \ifbeamercolorempty[bg]{block title alerted}
+  {}
+  {\justifying\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+  \usebeamerfont{block body alerted}%
+  \begin{beamercolorbox}[colsep*=2mm,vmode]{block body alerted}%
+    \justifying\ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\newenvironment{tbox}[1]{
+  \centering
+  \par\vskip\medskipamount%
+  \begin{beamercolorbox}[colsep*=2mm]{#1}
+    \justifying}{\end{beamercolorbox}}
+
+
+% 三种 tcb 盒子 talerts, texamples 以及 tfacets
 \newtcolorbox{tblock}[1]{
   enhanced,
   underlay={
@@ -232,6 +349,11 @@
             \end{beamercolorbox}
         \end{frame}
     }
+}
+
+% bib 参考文献
+\setbeamertemplate{bibliography item}{
+ 	\usebeamercolor[bg]{alerted}\insertbiblabel
 }
 
 \mode<all>

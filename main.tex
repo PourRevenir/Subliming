@@ -26,8 +26,11 @@
         Subliming 主题是一个为中南大学设计的 Beamer 主题，也可以通过调整模板中的颜色、字体和背景以适应其他大学的风格。 
         \\ ~ \\
         这个主题是在 Northwestern University 的 Aaron Wolf 制作的 \href{https://github.com/aarondwolf/wildcatwildcat}{Wildcat} 主题的基础上修改设计的，更适合国内高校。同其一样，Subliming 主题也遵循 \href{http://www.gnu.org/licenses/}{GNU 通用公共许可证}，这意味着任何人都可以免费自由使用这个主题！
-        \\ ~ \\
-        你也可以自定义这个主题！我在各个包中增加了中文注释，以便你更好地理解这个主题的设计。如果有任何问题或建议，欢迎向我们的 \href{https://github.com/PourRevenir/Subliming}{GitHub 仓库}提交 \href{https://github.com/PourRevenir/Subliming/issues}{issue} 或 \href{https://github.com/PourRevenir/Subliming/pulls}{pull request}！
+        
+        \setblockstyle{metropolis}
+        \begin{tbox}{default}
+            你也可以自定义这个主题！我在各个包中增加了中文注释，以便你更好地理解这个主题的设计。如果有任何问题或建议，欢迎向我们的 \href{https://github.com/PourRevenir/Subliming}{GitHub 仓库}提交 \href{https://github.com/PourRevenir/Subliming/issues}{issue} 或 \href{https://github.com/PourRevenir/Subliming/pulls}{pull request}！
+        \end{tbox}
     \end{frame}
 
     \begin{frame}{目录 Contents}
@@ -108,12 +111,15 @@
         
     \end{frame}
 
-    \begin{frame}{数学和等宽字体 Math \& Monospace Fonts}
+    \begin{frame}{数学字体 Math Fonts}
         使用了 \href{https://github.com/firamath/firamath}{Fira Math} 字体作为数学字体，这是一个开源的数学字体，适用于数学公式。需要在 Texlive 中安装， 可使用 \texttt{\alert{tlmgr} install firamath} 命令。
 
         \begin{equation}
             \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
         \end{equation}
+
+        如果需要在 MixTex 中安装，则使用 \texttt{\alert{mpm} --admin --install=firamath} 命令。
+
     \end{frame}
 
     \begin{frame}{文本颜色 Text Color}
@@ -152,20 +158,20 @@
 
     \section{3 盒子}
 
-    \begin{frame}{彩色盒子示例 (tcolorbox)}
-        这里提供了三种彩色盒子，你可以通过 \texttt{\textbackslash begin\{tblock\}} 环境创建. 你也可以使用 \texttt{talert} 和 \texttt{texample} 这两种环境分别生成其他颜色的盒子。
-        \begin{tblock}{定理}
-            这里是一个彩色盒子，颜色将和主题色一致。
+    \begin{frame}{tcolorbox 盒子示例}
+        这里提供了三种彩色盒子，你可以通过 \texttt{\textcolor{primary}{\textbackslash begin}\{tblock\}} 环境创建. 你也可以使用 \texttt{talert} 和 \texttt{texample} 这两种环境分别生成其他颜色的盒子。
+        \begin{tblock}{tblock}
+            这里是一个 tblock 盒子，颜色将和主题色一致。
         \end{tblock}
-        \begin{talert}{说明}
-            这里是一个说明，你也可以动手修改，比如制作一个可以自动编号的定理环境。
+        \begin{talert}{talert}
+            你也可以动手修改，比如制作一个可以自动编号的定理环境。
         \end{talert}
-        \begin{texample}{例 1-1}
-            这里是一个例子，其实只是一个绿色盒子。
+        \begin{texample}{texample}
+            这里是一个 texample 盒子。
         \end{texample}
     \end{frame}
 
-    \begin{frame}[fragile]{可自定义颜色的盒子示例 (Facetbox)}
+    \begin{frame}[fragile]{可自定义颜色的 tcb 盒子 }
         使用\texttt{tfacetbox} 可以自定义盒子的颜色。 这只适用于非原色（红、绿、蓝），因为不容易进行阴影处理。
         \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
             这是一个 tfacetbox 盒子. 可通过以下代码创建:
@@ -177,17 +183,151 @@
         \end{tfacetbox}
     \end{frame}
 
-    \begin{frame}{彩色盒子示例 (Default)}
-        你也可以使用 Beamer 提供的默认文本盒子。默认样式没有圆角和阴影。
-        \begin{block}{蓝色}
-            这里是一个蓝色盒子
-        \end{block}
-        \begin{alertblock}{红色}
-            这里是一个红色盒子
-        \end{alertblock}
-        \begin{exampleblock}{绿色}
-            这里是一个绿色盒子
-        \end{exampleblock}
+    \begin{frame}{盒子样式(I) Box Styles}
+        这里提供几种没有圆角和阴影的盒子样式，你可以通过 \texttt{\textcolor{primary}{\textbackslash setblockstyle}\{样式名称\}} 命令来切换盒子样式。
+
+        \begin{center}
+            \texttt{\textcolor{primary}{\textbackslash setblockstyle}\{native\}}
+        \end{center}
+
+        \setblockstyle{native}
+        \centering
+        \begin{minipage}[b]{0.5\textwidth}
+            \begin{block}{Default}
+                这是一个 Default 盒子
+            \end{block}
+            \begin{alertblock}{Alert}
+                这是一个 Alert 盒子
+            \end{alertblock}
+            \begin{exampleblock}{Example}
+                这是一个 Example 盒子
+            \end{exampleblock} 
+        \end{minipage}
+
+    \end{frame}
+
+    \begin{frame}{盒子样式(II) Box Styles}
+    如果使用    
+
+        \begin{center}
+            \texttt{\textcolor{primary}{\textbackslash setblockstyle}\{nobackground\}}
+        \end{center}
+    则会得到无背景的盒子样式。
+        \setblockstyle{nobackground}
+        \centering
+        \begin{minipage}[b]{0.5\textwidth}
+            \begin{block}{Default}
+                这是一个 Default 盒子
+            \end{block}
+            \begin{alertblock}{Alert}
+                这是一个 Alert 盒子
+            \end{alertblock}
+            \begin{exampleblock}{Example}
+                这是一个 Example 盒子
+            \end{exampleblock}       
+        \end{minipage}
+
+    \end{frame}
+
+    \begin{frame}{盒子样式(III) Box Styles}
+    下面是 Metropolis 风格的盒子样式。    
+
+        \begin{center}
+            \texttt{\textcolor{primary}{\textbackslash setblockstyle}\{metropolis\}}
+        \end{center}
+
+        \setblockstyle{metropolis}
+        \centering
+        \begin{minipage}[b]{0.5\textwidth}
+            \begin{block}{Default}
+                这是一个 Default 盒子
+            \end{block}
+            \begin{alertblock}{Alert}
+                这是一个 Alert 盒子
+            \end{alertblock}
+            \begin{exampleblock}{Example}
+                这是一个 Example 盒子
+            \end{exampleblock}       
+        \end{minipage}
+
+    \end{frame}
+
+    \begin{frame}{盒子样式(IV) Box Styles}
+    以及 Emph 风格的盒子样式。   
+
+        \begin{center}
+            \texttt{\textcolor{primary}{\textbackslash setblockstyle}\{emph\}}
+        \end{center}
+
+        \setblockstyle{emph}
+        \centering
+        \begin{minipage}[b]{0.5\textwidth}
+            \begin{block}{Default}
+                这是一个 Default 盒子
+            \end{block}
+            \begin{alertblock}{Alert}
+                这是一个 Alert 盒子
+            \end{alertblock}
+            \begin{exampleblock}{Example}
+                这是一个 Example 盒子
+            \end{exampleblock}       
+        \end{minipage}
+    \end{frame}
+
+    \begin{frame}[fragile]{tbox 盒子}
+        你也可以使用 \texttt{tbox} 环境来创建文本盒子，作为一种无标题的盒子样式。按照如下方式使用
+        
+        \begin{minipage}[b]{0.23\textwidth}
+        \setblockstyle{native}
+        \begin{tbox}{default}
+            Default 文本
+        \end{tbox}
+        \begin{tbox}{alerted}
+            Alert 文本
+        \end{tbox}
+        \begin{tbox}{example}
+            Example 文本
+        \end{tbox}      
+        \end{minipage}
+        \hspace{1cm}
+        \begin{minipage}[b]{0.23\textwidth}
+        \setblockstyle{metropolis}
+        \begin{tbox}{default}
+            Default 文本
+        \end{tbox}
+        \begin{tbox}{alerted}
+            Alert 文本
+        \end{tbox}
+        \begin{tbox}{example}
+            Example 文本
+        \end{tbox}      
+        \end{minipage}
+        \hspace{0.7cm}
+        \begin{minipage}[b]{0.35\textwidth}
+            \begin{verbatim}
+\setblockstyle{盒子样式}
+\begin{tbox}{盒子颜色}
+    文本内容
+\end{tbox}
+            \end{verbatim}
+        \end{minipage}
+    \end{frame}
+
+    \begin{frame}{盒子样式 (Default)}
+        你也可以使用 Beamer 提供的默认文本盒子样式。
+        \begin{center}
+            \begin{minipage}[b]{0.5\textwidth}
+                \begin{block}{ Default }
+                    这里是一个 Default 盒子
+                \end{block}
+                \begin{alertblock}{Alert}
+                    这里是一个 Alert 盒子
+                \end{alertblock}
+                \begin{exampleblock}{Example}
+                    这里是一个 Example 盒子
+                \end{exampleblock}
+            \end{minipage}
+        \end{center}
     \end{frame}
 
     \section{4 图表}
