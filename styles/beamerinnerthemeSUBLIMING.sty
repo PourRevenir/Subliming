@@ -15,16 +15,12 @@
 
 \mode<presentation>
 
-\usepackage{pgf}
-
 % 提供 beamer 主题的不同风格的选项，以便用户选择
 \DeclareOptionBeamer{cover}{\def\beamer@mytheme@cover{#1}}
 \ExecuteOptionsBeamer{cover=facet} %default
 \ProcessOptionsBeamer
 
 \def\beamer@mytheme@coverplain{plain}%
-\def\beamer@mytheme@coverfacettwo{facettwo}%
-\def\beamer@mytheme@coverTriangles{Triangles}%
 
 % 绘制 pattern
 \ifx\beamer@mytheme@cover\beamer@mytheme@coverplain%
@@ -146,6 +142,7 @@
   }
 }
 
+% ------------------------------------------------
 % 重写 block 环境
 \def\beamer@blockstylenative{native}%
 \def\beamer@blockstylenobackground{nobackground}%
@@ -330,6 +327,7 @@
 \renewenvironment{example}[1]{
 	\textcolor{primary40}{#1}
 }
+% ------------------------------------------------
 
 % 标准页 Standout Frame
 % 对重点创建无标题 standout frame，内容居中
@@ -351,6 +349,7 @@
     }
 }
 
+% ------------------------------------------------
 % bib 参考文献
 \setbeamertemplate{bibliography item}{
  	\usebeamercolor[bg]{alerted}\insertbiblabel

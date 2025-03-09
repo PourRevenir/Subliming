@@ -48,29 +48,11 @@
         
         目前内置的颜色风格包括：
 
-%         \newcommand{\colorRow}[1]{
-% 	        \begin{tabular}{p{3cm}cccccccc}
-% #1 &  \cellcolor{primary130}\hspace*{7mm}&\cellcolor{primary120}\hspace*{7mm}&\cellcolor{primary110}\hspace*{7mm}&\cellcolor{primary}\hspace*{7mm}&\cellcolor{primary40}\hspace*{7mm}&\cellcolor{primary30}\hspace*{7mm}&\cellcolor{primary20}\hspace*{7mm}&\cellcolor{primary10}\hspace*{7mm}&\\
-%             \end{tabular}
-%  	    }
-        % \definecolor{primary}{HTML}{186199}
-        % \definecolor{primary130}{HTML}{022A48}
-        % \definecolor{primary120}{HTML}{053860}
-        % \definecolor{primary110}{HTML}{0D4A79}
-        % \definecolor{primary40}{HTML}{3572A0}
-        % \definecolor{primary30}{HTML}{578DB6}
-        % \definecolor{primary20}{HTML}{81AFD2}
-        % \definecolor{primary10}{HTML}{B6D4EB}
-        % \colorRow{中南蓝 csublue(default)}\\[0.3cm]
-        % \definecolor{primary}{RGB}{078, 042, 132}
-        % \definecolor{primary130}{RGB}{056, 023, 090}
-        % \definecolor{primary120}{RGB}{064, 031, 104}
-        % \definecolor{primary110}{RGB}{072, 036, 118}
-        % \definecolor{primary40}{RGB}{164, 149, 195}
-        % \definecolor{primary30}{RGB}{182, 172, 209}
-        % \definecolor{primary20}{RGB}{204, 196, 223}
-        % \definecolor{primary10}{RGB}{228, 224, 238}
-        % \colorRow{西北紫 nupurple}\\[0.3cm]  
+       \begin{itemize}
+            \item \textcolor[HTML]{186199}{中南蓝 csublue}
+            \item \textcolor[RGB]{078, 042, 132}{西北紫 nupurple}
+            \item \textcolor[HTML]{A00000}{湖大红 hnured}
+        \end{itemize}  
        
     \end{frame}
     
@@ -80,7 +62,7 @@
             \texttt{\textcolor{primary}{\textbackslash usetheme}[cover=封面样式]\alert{\{SUBLIMING\}}}
         \end{center}
 
-        目前内置的封面样式包括 facet 和 plain 两种。
+        目前内置的封面样式包括低面数风格 facet 和空白 plain 两种，默认为 facet。
     \end{frame}
 
 
@@ -108,7 +90,8 @@
                 \item \textbf{\textit{粗斜体}}
             \end{itemize}
         \end{columns}
-        
+        \vspace*{0.5cm}
+        参考文献引用：\cite{Mosher2013} \cite{Asgharzadeh2008} \cite{Frese1999} \cite{Gharti2017}
     \end{frame}
 
     \begin{frame}{数学字体 Math Fonts}
@@ -175,11 +158,11 @@
         使用\texttt{tfacetbox} 可以自定义盒子的颜色。 这只适用于非原色（红、绿、蓝），因为不容易进行阴影处理。
         \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
             这是一个 tfacetbox 盒子. 可通过以下代码创建:
-            \begin{verbatim}
+            \begin{minted}{latex}
     \begin{tfacetbox}[自定义的颜色]{盒子标题}
         这是一个 tfacetbox 盒子...
     \end{tfacetbox}
-            \end{verbatim}
+            \end{minted}
         \end{tfacetbox}
     \end{frame}
 
@@ -304,12 +287,12 @@
         \end{minipage}
         \hspace{0.7cm}
         \begin{minipage}[b]{0.35\textwidth}
-            \begin{verbatim}
+            \begin{minted}{latex}
 \setblockstyle{盒子样式}
 \begin{tbox}{盒子颜色}
     文本内容
 \end{tbox}
-            \end{verbatim}
+            \end{minted}
         \end{minipage}
     \end{frame}
 
@@ -332,7 +315,50 @@
 
     \section{4 图表}
 
+    \begin{frame}{表格 Tables}
+            \begin{table}
+            \caption{Largest cities in the world (source: Wikipedia)}
+            \label{tab:table1}
+            \begin{tabular}{@{} lr @{}}
+            \toprule
+            City & Population\\
+            \midrule
+            Mexico City & 20,116,842\\
+            Shanghai & 19,210,000\\
+            Peking & 15,796,450\\
+            Istanbul & 14,160,467\\
+            \bottomrule
+            \end{tabular}
+            \hspace*{1cm}
+              \setlength\extrarowheight{3pt}
+            \begin{tabular}{|lr|}
+            \hline
+            \rowcolor{primary}\color{background}City & \color{background}Population\\
+            \hline
+            Mexico City & 20,116,842\\
+            Shanghai & 19,210,000\\
+            Peking & 15,796,450\\
+            Istanbul & 14,160,467\\
+            \hline
+            \end{tabular}
+        \end{table}
+    \end{frame}
+
+    \begin{frame}{绘图 Plots}
+       
+    
+    \end{frame}
+
     \section{5 参考文献}
+
+    \begin{frame}[allowframebreaks,noframenumbering]{参考文献 References}
+        \bibliographystyle{SUBLIMING} 
+        \bibliography{references}
+    \end{frame}
+
+    \begin{frame}{标准页 Standard Page}
+        你可以通过 \texttt{\textcolor{primary}{\textbackslash standout}\{文本\}} 命令创建一个标准页。文本内容将居中显示。
+    \end{frame}
 
     \standout{Questions \& Answers}
 
