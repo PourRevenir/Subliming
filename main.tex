@@ -1,8 +1,9 @@
-\documentclass[aspectratio=1610,fontset=none]{ctexbeamer}
+\documentclass[10pt,aspectratio=169,fontset=none]{ctexbeamer}
 \usepackage[T1]{fontenc}
 
 \title{Subliming 主题 Beamer 示例}
-\author{杨曜堃\ \ 地球科学与信息物理学院}
+\author{杨曜堃}
+\institute{地球科学与信息物理学院}
 \date{February 19, 2025}
 
 % 添加封面上的大学校标，这里使用的是白色中南大学校标，并设置透明度为 30%
@@ -12,8 +13,8 @@
 
 \usepackage{styles/SUBLIMINGmacros}
 \usefolder{styles}
-\usetheme[style=csublue]{SUBLIMING} % 在这里更换颜色主题风格
-% 支持 csu blue 和 nupurple 两种风格
+\usetheme[style=csublue, cover=facet]{SUBLIMING} % 在这里更换颜色主题风格
+% 支持 csublue 和 nupurple 两种风格
 
 \begin{document}
 
@@ -33,7 +34,123 @@
         \tableofcontents
     \end{frame}
 
-    \section{1 颜色和样式}
+    \section{1 选项}
+
+    \begin{frame}{颜色 Colors}
+        Subliming 主题允许切换主题颜色，并内置了几种风格。默认的风格为中南蓝，可通过修改如下选项来切换主题颜色：
+        
+        \begin{center}
+            \texttt{\textcolor{primary}{\textbackslash usetheme}[style=颜色风格]\alert{\{SUBLIMING\}}}
+        \end{center}
+        
+        目前内置的颜色风格包括：
+
+%         \newcommand{\colorRow}[1]{
+% 	        \begin{tabular}{p{3cm}cccccccc}
+% #1 &  \cellcolor{primary130}\hspace*{7mm}&\cellcolor{primary120}\hspace*{7mm}&\cellcolor{primary110}\hspace*{7mm}&\cellcolor{primary}\hspace*{7mm}&\cellcolor{primary40}\hspace*{7mm}&\cellcolor{primary30}\hspace*{7mm}&\cellcolor{primary20}\hspace*{7mm}&\cellcolor{primary10}\hspace*{7mm}&\\
+%             \end{tabular}
+%  	    }
+        % \definecolor{primary}{HTML}{186199}
+        % \definecolor{primary130}{HTML}{022A48}
+        % \definecolor{primary120}{HTML}{053860}
+        % \definecolor{primary110}{HTML}{0D4A79}
+        % \definecolor{primary40}{HTML}{3572A0}
+        % \definecolor{primary30}{HTML}{578DB6}
+        % \definecolor{primary20}{HTML}{81AFD2}
+        % \definecolor{primary10}{HTML}{B6D4EB}
+        % \colorRow{中南蓝 csublue(default)}\\[0.3cm]
+        % \definecolor{primary}{RGB}{078, 042, 132}
+        % \definecolor{primary130}{RGB}{056, 023, 090}
+        % \definecolor{primary120}{RGB}{064, 031, 104}
+        % \definecolor{primary110}{RGB}{072, 036, 118}
+        % \definecolor{primary40}{RGB}{164, 149, 195}
+        % \definecolor{primary30}{RGB}{182, 172, 209}
+        % \definecolor{primary20}{RGB}{204, 196, 223}
+        % \definecolor{primary10}{RGB}{228, 224, 238}
+        % \colorRow{西北紫 nupurple}\\[0.3cm]  
+       
+    \end{frame}
+    
+    \begin{frame}{封面样式 Cover Style}
+        你也可以自定义封面样式。默认的封面样式为 Facet，你可以通过修改如下选项来切换封面样式：
+        \begin{center}
+            \texttt{\textcolor{primary}{\textbackslash usetheme}[cover=封面样式]\alert{\{SUBLIMING\}}}
+        \end{center}
+
+        目前内置的封面样式包括 facet 和 plain 两种。
+    \end{frame}
+
+
+    \section{2 文字}
+
+    \begin{frame}{字体和样式 Fonts \& Styles}
+        内置了几种中英文文字样式，需要确保字体文件处于正确的路径下。
+        \begin{columns}
+            \column{0.3\textwidth}
+            \begin{itemize}
+                \item Regular
+                \item \alert{Alert}
+                \item \example{Example}
+                \item \textit{Italic}
+                \item \textbf{Bold}
+                \item \textbf{\textit{Bold Italic}}
+            \end{itemize}
+            \column{0.6\textwidth}
+            \begin{itemize}
+                \item 常规
+                \item \alert{醒目}
+                \item \example{例子}
+                \item \textit{斜体}
+                \item \textbf{粗体}
+                \item \textbf{\textit{粗斜体}}
+            \end{itemize}
+        \end{columns}
+        
+    \end{frame}
+
+    \begin{frame}{数学和等宽字体 Math \& Monospace Fonts}
+        使用了 \href{https://github.com/firamath/firamath}{Fira Math} 字体作为数学字体，这是一个开源的数学字体，适用于数学公式。需要在 Texlive 中安装， 可使用 \texttt{\alert{tlmgr} install firamath} 命令。
+
+        \begin{equation}
+            \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+        \end{equation}
+    \end{frame}
+
+    \begin{frame}{文本颜色 Text Color}
+        你也可以自定义文本颜色。
+        \\ ~ \\
+        默认的文本颜色为黑色，你可以通过命令\texttt{\textbackslash textcolor\{颜色\}\{文本\}}得到彩色文本，内置颜色包括：
+        \begin{columns}
+            \column{0.3\textwidth}
+            \begin{itemize}
+                \item[$\textcolor{primary}{\bullet}$] \textcolor{primary}{primary} 
+                \item[$\textcolor{primary40}{\bullet}$] \textcolor{primary40}{primary40}
+                \item[$\textcolor{primary30}{\bullet}$] \textcolor{primary30}{primary30}
+                \item[$\textcolor{primary20}{\bullet}$] \textcolor{primary20}{primary20}
+                \item[$\textcolor{primary10}{\bullet}$] \textcolor{primary10}{primary10}
+            \end{itemize}
+            \column{0.3\textwidth}
+            \begin{itemize}
+                \item[$\textcolor{nubrightgreen}{\bullet}$] \textcolor{nubrightgreen}{nubrightgreen}
+                \item[$\textcolor{nubrightteal}{\bullet}$] \textcolor{nubrightteal}{nubrightteal}
+                \item[$\textcolor{nubrightblue}{\bullet}$] \textcolor{nubrightblue}{nubrightblue}
+                \item[$\textcolor{nubrightyellow}{\bullet}$] \textcolor{nubrightyellow}{nubrightyellow}
+                \item[$\textcolor{nubrightorange}{\bullet}$] \textcolor{nubrightorange}{nubrightorange}
+                \item[$\textcolor{nubrightred}{\bullet}$] \textcolor{nubrightred}{nubrightred}
+            \end{itemize}
+            \column{0.3\textwidth}
+            \begin{itemize}
+                \item[$\textcolor{nudarkgreen}{\bullet}$] \textcolor{nudarkgreen}{nudarkgreen}
+                \item[$\textcolor{nudarkteal}{\bullet}$] \textcolor{nudarkteal}{nudarkteal}
+                \item[$\textcolor{nudarkblue}{\bullet}$] \textcolor{nudarkblue}{nudarkblue}
+                \item[$\textcolor{nudarkyellow}{\bullet}$] \textcolor{nudarkyellow}{nudarkyellow}
+                \item[$\textcolor{nudarkorange}{\bullet}$] \textcolor{nudarkorange}{nudarkorange}
+                \item[$\textcolor{nudarkred}{\bullet}$] \textcolor{nudarkred}{nudarkred}
+            \end{itemize}
+        \end{columns}
+    \end{frame}
+
+    \section{3 盒子}
 
     \begin{frame}{彩色盒子示例 (tcolorbox)}
         这里提供了三种彩色盒子，你可以通过 \texttt{\textbackslash begin\{tblock\}} 环境创建. 你也可以使用 \texttt{talert} 和 \texttt{texample} 这两种环境分别生成其他颜色的盒子。
@@ -53,15 +170,14 @@
         \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
             这是一个 tfacetbox 盒子. 可通过以下代码创建:
             \begin{verbatim}
-    \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
+    \begin{tfacetbox}[自定义的颜色]{盒子标题}
         这是一个 tfacetbox 盒子...
     \end{tfacetbox}
             \end{verbatim}
         \end{tfacetbox}
     \end{frame}
 
-    \begin{frame}
-        \frametitle{彩色盒子示例 (Default)}
+    \begin{frame}{彩色盒子示例 (Default)}
         你也可以使用 Beamer 提供的默认文本盒子。默认样式没有圆角和阴影。
         \begin{block}{蓝色}
             这里是一个蓝色盒子
@@ -72,204 +188,12 @@
         \begin{exampleblock}{绿色}
             这里是一个绿色盒子
         \end{exampleblock}
-        \end{frame}
+    \end{frame}
 
-    % \begin{frame}
-    %     \frametitle{颜色 Colors}
-    %     The theme has a few Northwestern-specific colors defined, which you can use in your slides. These are:
-    %     \begin{columns}
-    %     \column{0.3\textwidth}
-    %     \begin{itemize}
-    %         \item[$\textcolor{nupurple}{\bullet}$] \textcolor{nupurple}{nupurple} 
-    %         \item[$\textcolor{nupurple90}{\bullet}$] \textcolor{nupurple90}{nupurple90} 
-    %         \item[$\textcolor{nupurple80}{\bullet}$] \textcolor{nupurple80}{nupurple80}
-    %         \item[$\textcolor{nupurple70}{\bullet}$] \textcolor{nupurple70}{nupurple70}
-    %         \item[$\textcolor{nupurple60}{\bullet}$] \textcolor{nupurple60}{nupurple60}
-    %         \item[$\textcolor{nupurple50}{\bullet}$] \textcolor{nupurple50}{nupurple50}
-    %         \item[$\textcolor{nupurple40}{\bullet}$] \textcolor{nupurple40}{nupurple40}
-    %         \item[$\textcolor{nupurple30}{\bullet}$] \textcolor{nupurple30}{nupurple30}
-    %         \item[$\textcolor{nupurple20}{\bullet}$] \textcolor{nupurple20}{nupurple20}
-    %         \item[$\textcolor{nupurple10}{\bullet}$] \textcolor{nupurple10}{nupurple10}
-    %     \end{itemize}
-    %     \column{0.3\textwidth}
-    %     \begin{itemize}
-    %         \item[$\textcolor{nupurple160}{\bullet}$] \textcolor{nupurple160}{nupurple160}
-    %         \item[$\textcolor{nupurple150}{\bullet}$] \textcolor{nupurple150}{nupurple150}
-    %         \item[$\textcolor{nupurple140}{\bullet}$] \textcolor{nupurple140}{nupurple140}
-    %         \item[$\textcolor{nupurple130}{\bullet}$] \textcolor{nupurple130}{nupurple130}
-    %         \item[$\textcolor{nupurple120}{\bullet}$] \textcolor{nupurple120}{nupurple120}
-    %         \item[$\textcolor{nupurple110}{\bullet}$] \textcolor{nupurple110}{nupurple110}
-    %         \item[$\textcolor{nurichblack}{\bullet}$] \textcolor{nurichblack}{nurichblack}
-    %         \item[$\textcolor{nubrightgreen}{\bullet}$] \textcolor{nubrightgreen}{nubrightgreen}
-    %         \item[$\textcolor{nubrightteal}{\bullet}$] \textcolor{nubrightteal}{nubrightteal}
-    %         \item[$\textcolor{nubrightblue}{\bullet}$] \textcolor{nubrightblue}{nubrightblue}
-    %     \end{itemize}
-    %     \column{0.3\textwidth}
-    %     \begin{itemize}
-    %         \item[$\textcolor{nubrightyellow}{\bullet}$] \textcolor{nubrightyellow}{nubrightyellow}
-    %         \item[$\textcolor{nubrightorange}{\bullet}$] \textcolor{nubrightorange}{nubrightorange}
-    %         \item[$\textcolor{nubrightred}{\bullet}$] \textcolor{nubrightred}{nubrightred}
-    %         \item[$\textcolor{nudarkgreen}{\bullet}$] \textcolor{nudarkgreen}{nudarkgreen}
-    %         \item[$\textcolor{nudarkteal}{\bullet}$] \textcolor{nudarkteal}{nudarkteal}
-    %         \item[$\textcolor{nudarkblue}{\bullet}$] \textcolor{nudarkblue}{nudarkblue}
-    %         \item[$\textcolor{nudarkyellow}{\bullet}$] \textcolor{nudarkyellow}{nudarkyellow}
-    %         \item[$\textcolor{nudarkorange}{\bullet}$] \textcolor{nudarkorange}{nudarkorange}
-    %         \item[$\textcolor{nudarkred}{\bullet}$] \textcolor{nudarkred}{nudarkred}
-    %     \end{itemize}
-    %     \end{columns}
-    % \end{frame}
+    \section{4 图表}
 
-    % \begin{frame}{Modifying Main Colors (I)}
-    %     You can change the main colors of the theme by redefining the following colors in your preamble. You can use any color you want, but the theme is designed to work best with shades of the Northwestern purple.
-    %     \begin{itemize}
-    %         \item \texttt{wcprimary} (main color)
-    %         \item \texttt{wcprimary10} (main color, 10\% shade) through \texttt{wcprimary40} (main color, 40\% shade)
-    %         \item \texttt{wcprimary110} (main color, 110\% shade) through \texttt{wcprimary160} (main color, 160\% shade)
-    %         \item \texttt{wcalerted} (alert color)
-    %         \item \texttt{wcexample} (example color)
-    %     \end{itemize}
-    % The shades of wcprimary are used for the background of facets. There are wcprimary10, wcprimary20, ..., wcprimary160, but only 10-40 and 110-140 are used.
-    % \end{frame}
+    \section{5 参考文献}
 
-    % \begin{frame}[fragile]
-    %     \frametitle{Modifying Main Colors (II)}
-    %     For example, to modify the main color to be a shade of blue, you could use the following code in your preamble (after loading the theme):
-    %     \begin{verbatim}
-    %         \definecolor{wcprimary}{RGB}{0,53,107}
-    %         \definecolor{wcprimary140}{RGB}{0, 34, 70}
-    %         \definecolor{wcprimary130}{RGB}{0, 40, 80}
-    %         \definecolor{wcprimary120}{RGB}{0, 45, 91}
-    %         \definecolor{wcprimary110}{RGB}{0, 50, 102}
-    %         \definecolor{wcprimary40}{RGB}{153, 174, 196}
-    %         \definecolor{wcprimary30}{RGB}{179, 194, 211}
-    %         \definecolor{wcprimary20}{RGB}{204, 215, 225}
-    %         \definecolor{wcprimary10}{RGB}{230, 235, 240}
-    %     \end{verbatim}
-    %     This sets the main color to Yale Blue, and all the shades used in the facet pattern. The preambles of the example slides in this document show how to modify the colors.
-    % \end{frame}
-
-    % \begin{frame}[fragile]
-    %     \frametitle{Using Colors in Graphs}
-    %     %You can use the colors in your graphs in Python, R, and Stata using the following commands:
-    %     \begin{tblock}{Python Code}
-    %         \footnotesize
-    %         \begin{verbatim}
-    % import matplotlib.pyplot as plt
-    % import pandas as pd
-    % plt.style.use('ggplot')
-    % # Create colors
-    % wcprimary = (78/255,42/255,132/255)
-    % df = pd.read_stata("source/graphs/auto.dta")
-    % plt.scatter(df["weight"], df["mpg"], color=wcprimary)
-    % plt.xlabel("Weight")
-    % plt.ylabel("MPG")
-    % plt.savefig("source/graphs/plot-python.pdf")
-    % plt.show()
-    %         \end{verbatim}
-    %     \end{tblock}
-    % \end{frame}
-
-    % \begin{frame}[fragile]
-    %     \frametitle{Using Colors in Graphs}
-    %     \begin{tblock}{Stata Code}
-    %         \footnotesize
-    %         \begin{verbatim}
-    % *ssc install schemepack, replace
-    % sysuse auto, clear
-    % local wcprimary "78 42 132"
-
-    % twoway (scatter mpg weight, mcolor("`wcprimary'")), ///
-    %         scheme(gg_tableau)
-            
-    % graph export "plot-stata.pdf", replace
-    %         \end{verbatim}
-    %     \end{tblock}
-    % \end{frame}
-
-    % \begin{frame}{Font Style: Default}
-    %     The theme uses the official Northwestern fonts, which are Campton (for titles) and Akkurat Pro (for copy). These are not free fonts, so you will need to purchase (and install) them if you want to use them.
-    %     \\ ~ \\
-    %     The wildcat theme uses the OTF files directly, so as long as you have the OTFs in a similar relative directory as the demo files, it should work (this includes on Overleaf). If you have installed them, you can look at the \texttt{\textbackslash beamerfontthemewildcat-installed.sty} file to see how to use the installed fonts.
-    %     \\ ~ \\
-    %     Note: You need to us XeLaTeX or LuaLaTeX to compile in order to use custom fonts. If you use PDFLaTeX, you will get an error.
-    % \end{frame}
-
-    % \begin{frame}{Font Style: Overleaf \& Local}
-    %     There is also a font theme called \texttt{wildcat-overleaf} which will load fonts available from Overleaf (as well as local \LaTeX ~ installations). To use this, you just need to specify in your preamble the following command \textit{after} loading the theme: 
-    %     \texttt{\textbackslash usefonttheme\{wildcat-overleaf\}}
-    % \end{frame}
-
-    % \begin{frame}[fragile]{Font Style: Default in Overleaf}
-    %     An alternative is to upload the OTF or TTF files to your Overleaf directory, and then change the \texttt{beamerfontthemewildcat.sty} files to specify those font files rather than the font family generally. Alternatively, simply add the lines of code directly to your preamble \textit{after} loading the theme:
-    %     \footnotesize
-    %     \begin{verbatim}
-    % % Create new font families from OTF fonts
-    % \newfontfamily\CamptonMedium[Path=fonts/Campton/, Extension=.otf]{Campton Medium}
-    % \newfontfamily\CamptonLight[Path=fonts/Campton/, Extension=.otf]{Campton Light}
-
-    % % Change title font to Campton
-    % \setbeamerfont{title}{family=\CamptonMedium, size=\LARGE}
-    % \setbeamerfont{author}{family=\CamptonLight, size=\small}
-    % \setbeamerfont{frametitle}{family=\CamptonMedium, size=\Large}
-    % \setbeamerfont{section}{family=\CamptonLight, size=\LARGE}
-    %     \end{verbatim}
-    % \end{frame}
-
-    % \begin{frame}{Font Style: Examples}
-    %     Here is what the body font will look like under normal usage:
-    %     \begin{itemize}
-    %         \item Regular
-    %         \item \textit{Italic}
-    %         \item \textbf{Bold}
-    %         \item \textbf{\textit{Bold Italic}}
-    %         \item \alert{Alert}
-    %         \item \alert{\textit{Alert Italic}}
-    %         \item Math: $$e = \lim_{n \rightarrow \infty}\left(1+\frac{1}{n}\right)^{n}$$
-    %     \end{itemize}
-    % \end{frame}
-
-    % \begin{frame}{Sections}
-    %     You can use \texttt{\textbackslash section\{\}} to group slides into sections. This will automatically add a section title slide at the beginning of each section.
-    %     \\ ~ \\
-    %     You can turn this off by adding \texttt{\textbackslash AtBeginSection\{\}} to your preamble (this tells beamer to do precisely nothing when a new section starts).
-    % \end{frame}
-
-
-    
-
-    % \begin{frame}[fragile]{Advanced: Altering the background pattern}
-    %     The background pattern is created using the \texttt{tikz} package. You can modify the background pattern by changing the \texttt{beamerinnerthemewildcat.sty} file. The background pattern is created in the \texttt{\textbackslash bgpattern} command defined at the top of the file.
-    %     \\ ~ \\
-    %     You don't necessarily need to change the file itself. You can just re-define those commands in your preamble. For example, if you wanted to change the background pattern to be just the main color, you could use the following code in your preamble: \\
-        
-    %     \scriptsize
-    %     \begin{verbatim}
-    % \renewcommand{\bgpattern}{
-    %     \draw[color=wcprimary,fill=wcprimary] (0,0) rectangle (\paperwidth,\paperheight);
-    % }
-    %     \end{verbatim} 
-    % \end{frame}
-
-
-
-
-    % % Blank Frame
-    % \begin{frame}[plain]{}
-    %     Here is a blank frame. You can use this to add a blank page to your presentation. You can specify this via:
-    %     \\ ~ \\
-    %     \texttt{\textbackslash begin\{frame\}[plain]\{\}} \\
-    %     \texttt{...} \\
-    %     \texttt{\textbackslash end\{frame\}}
-    % \end{frame}
-
-    % % Standout frame
-    % \begin{frame}{Standout Slides}
-    %     You can use the \texttt{standout} command to create a slide with a large font and no title. This is useful for a slide that you want to stand out, but which doesn't need a title.
-    %     \\ ~ \\
-    %     \texttt{\textbackslash standout\{Questions?\}}
-
-    % \end{frame}
-
-    \standout{谢谢 Thank You}
+    \standout{Questions \& Answers}
 
 \end{document}

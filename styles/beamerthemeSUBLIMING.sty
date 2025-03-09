@@ -15,7 +15,7 @@
 
 \mode<presentation>
 
-% Requirement
+% 引入所需宏包
 \RequirePackage{tikz}
 \usetikzlibrary{shapes.geometric,calc,shadows}
 \RequirePackage{pgf}
@@ -23,16 +23,21 @@
 \RequirePackage{fontspec}
 \RequirePackage{tcolorbox}
 \tcbuselibrary{skins}
+\RequirePackage{booktabs}
+\RequirePackage{colortbl}
 \RequirePackage{enumitem}
 
-% Options
+% 引入主题选项
 \DeclareOptionBeamer{style}{
     \PassOptionsToPackage{style=#1}{styles/beamercolorthemeSUBLIMING}
 }
-\ExecuteOptionsBeamer{style=csu-blue}
+\DeclareOptionBeamer{cover}{
+    \PassOptionsToPackage{cover=#1}{styles/beamerinnerthemeSUBLIMING}
+}
+\ExecuteOptionsBeamer{style=csu-blue, cover=facet}
 \ProcessOptionsBeamer
 
-% Settings
+% 导入主题包
 \useinnertheme{SUBLIMING}
 \useoutertheme{SUBLIMING}
 \usecolortheme{SUBLIMING}

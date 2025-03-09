@@ -15,33 +15,50 @@
 
 \mode<presentation>
 
+\usepackage{pgf}
+
+% 提供 beamer 主题的不同风格的选项，以便用户选择
+\DeclareOptionBeamer{cover}{\def\beamer@mytheme@cover{#1}}
+\ExecuteOptionsBeamer{cover=facet} %default
+\ProcessOptionsBeamer
+
+\def\beamer@mytheme@coverplain{plain}%
+\def\beamer@mytheme@coverfacettwo{facettwo}%
+\def\beamer@mytheme@coverTriangles{Triangles}%
+
 % 绘制 pattern
-\newcommand{\drawpattern}[4]{
-  % 定义坐标
-  \coordinate (A) at (0,0); % 南西
-  \coordinate (B) at (0,0.9*\the\paperheight); % 西
-  \coordinate (C) at (4.4,0.75*\the\paperheight); % 中西
-  \coordinate (D) at (6.4,0); % 南南西
-  \coordinate (E) at (6.4,\the\paperheight); % 北西
-  \coordinate (F) at (7.7,0); % 南南南西
-  \coordinate (G) at (13.2,0.77*\the\paperheight); % 中东
-  \coordinate (H) at (11.6,0); % 南南南东
-  \coordinate (I) at (\the\paperwidth,0.55*\the\paperheight); % 北东东
-  \coordinate (J) at (\the\paperwidth,0.18*\the\paperheight); % 南东东
-  \coordinate (K) at (12,0); % 南南东
-  \coordinate (L) at (12.8,\the\paperheight); % 北北东
-  \coordinate (M) at (0,\the\paperheight); % 北西
-  \coordinate (N) at (\the\paperwidth,0); % 南东
-  \coordinate (O) at (\the\paperwidth,\the\paperheight); % 北东
-  % 绘制多边形
-  \draw[color=#1,fill=#1, line width=0.05pt] (A) -- (B) -- (C) -- (D) -- cycle;
-  \draw[color=#2,fill=#2, line width=0.05pt] (M) -- (B) -- (C) -- (E) -- cycle;
-  \draw[color=#3,fill=#3, line width=0.05pt] (E) -- (C) -- (D) -- (F) -- (G) -- (L) -- cycle;
-  \draw[color=#4,fill=#4, line width=0.05pt] (F) -- (G) -- (H) -- cycle;
-  \draw[color=#2,fill=#2, line width=0.05pt] (H) -- (G) -- (I) -- (J) -- (K) -- cycle;
-  \draw[color=#1,fill=#1, line width=0.05pt] (K) -- (J) -- (N) -- cycle;
-  \draw[color=#1,fill=#1,  line width=0.05pt] (L) -- (G) -- (I) -- (O) -- cycle;
-}
+\ifx\beamer@mytheme@cover\beamer@mytheme@coverplain%
+    \newcommand{\drawpattern}[4]{
+        \fill[fill=#1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+    }
+    \else%
+    \newcommand{\drawpattern}[4]{
+        % 定义坐标
+        \coordinate (A) at (0,0); % 南西
+        \coordinate (B) at (0,0.9*\the\paperheight); % 西
+        \coordinate (C) at (4.4,0.75*\the\paperheight); % 中西
+        \coordinate (D) at (6.4,0); % 南南西
+        \coordinate (E) at (6.4,\the\paperheight); % 北西
+        \coordinate (F) at (7.7,0); % 南南南西
+        \coordinate (G) at (13.2,0.77*\the\paperheight); % 中东
+        \coordinate (H) at (11.6,0); % 南南南东
+        \coordinate (I) at (\the\paperwidth,0.55*\the\paperheight); % 北东东
+        \coordinate (J) at (\the\paperwidth,0.18*\the\paperheight); % 南东东
+        \coordinate (K) at (12,0); % 南南东
+        \coordinate (L) at (12.8,\the\paperheight); % 北北东
+        \coordinate (M) at (0,\the\paperheight); % 北西
+        \coordinate (N) at (\the\paperwidth,0); % 南东
+        \coordinate (O) at (\the\paperwidth,\the\paperheight); % 北东
+        % 绘制多边形
+        \draw[color=#1,fill=#1, line width=0.05pt] (A) -- (B) -- (C) -- (D) -- cycle;
+        \draw[color=#2,fill=#2, line width=0.05pt] (M) -- (B) -- (C) -- (E) -- cycle;
+        \draw[color=#3,fill=#3, line width=0.05pt] (E) -- (C) -- (D) -- (F) -- (G) -- (L) -- cycle;
+        \draw[color=#4,fill=#4, line width=0.05pt] (F) -- (G) -- (H) -- cycle;
+        \draw[color=#2,fill=#2, line width=0.05pt] (H) -- (G) -- (I) -- (J) -- (K) -- cycle;
+        \draw[color=#1,fill=#1, line width=0.05pt] (K) -- (J) -- (N) -- cycle;
+        \draw[color=#1,fill=#1,  line width=0.05pt] (L) -- (G) -- (I) -- (O) -- cycle;
+    }
+\fi%
 
 % 绘制 title page 和 standout frames, 以及 tblocks
 \newcommand{\bgpattern}{
@@ -87,7 +104,7 @@
 }
 
 % 标题页文本位置
-\defbeamertemplate*{title page}{wildcat}[1][]
+\defbeamertemplate*{title page}{SUBLIMING}[1][]
 { 
 % 清除 headline/footline 模板
 \setbeamertemplate{headline}{} 
@@ -100,7 +117,7 @@
     \end{beamercolorbox}%
     \vskip0.75cm%
     \begin{beamercolorbox}[wd=12cm,leftskip=0cm,#1]{author}
-        \raggedright\usebeamerfont{author}\insertauthor%
+        \raggedright\usebeamerfont{author}\insertauthor\ \ \insertinstitute%
     \end{beamercolorbox}
      \vskip0.2cm%
     \begin{beamercolorbox}[wd=12cm,leftskip=0cm,#1]{date}
@@ -190,6 +207,11 @@
     \end{tcbclipinterior}
   },
   title=#2
+}
+
+% exmaple 环境
+\renewenvironment{example}[1]{
+	\textcolor{primary40}{#1}
 }
 
 % 标准页 Standout Frame

@@ -27,37 +27,39 @@
 \ProcessOptionsBeamer
 
 \def\beamer@mytheme@stylenupurple{nupurple}%
+\def\beamer@mytheme@stylehnured{hnured}%
 
 \ifx\beamer@mytheme@style\beamer@mytheme@stylenupurple%
-    % Northwestern University  purple
-    \definecolor{primary}{RGB}{078, 042, 132} % nupurple (and its variations below)
+    % 定义 Northwestern University 风格 (purple)
+    \definecolor{primary}{RGB}{078, 042, 132}
     \definecolor{primary130}{RGB}{056, 023, 090}
     \definecolor{primary120}{RGB}{064, 031, 104}
     \definecolor{primary110}{RGB}{072, 036, 118}
     \definecolor{primary40}{RGB}{164, 149, 195}
     \definecolor{primary30}{RGB}{182, 172, 209}
     \definecolor{primary20}{RGB}{204, 196, 223}
-    \definecolor{primary10}{RGB}{228, 224, 238}
-        % \else\ifx\beamer@mytheme@style\beamer@mytheme@stylepantonetwentytwo%
-        % 	% Pantone 2022
-        % 	\definecolor{primaryLight}{HTML}{7470C7}
-        % 	\definecolor{primary}{HTML}{6868AD}
-        % 	\definecolor{secondary}{HTML}{F36F61}
-        % 	\definecolor{tertiary}{HTML}{8AACD4}
-\else% 
-    % Central South University blue (default)
-    \definecolor{primary}{HTML}{186199}
-    \definecolor{primary130}{HTML}{022A48}
-    \definecolor{primary120}{HTML}{053860}
-    \definecolor{primary110}{HTML}{0D4A79}
-    \definecolor{primary40}{HTML}{3572A0}
-    \definecolor{primary30}{HTML}{578DB6}
-    \definecolor{primary20}{HTML}{81AFD2}
-    \definecolor{primary10}{HTML}{B6D4EB}
-    % \fi%
+    \definecolor{primary10}{RGB}{228, 224, 238}       \else\ifx\beamer@mytheme@style\beamer@mytheme@stylehnured%
+        % 定义 hnu-red 风格 (red) 
+        \definecolor{primary}{HTML}{A00000}
+        \definecolor{primary130}{HTML}{800000}
+        \definecolor{primary120}{HTML}{880000}
+        \definecolor{primary110}{HTML}{900000}
+        \definecolor{primary40}{HTML}{B03030}
+        \definecolor{primary30}{HTML}{C05050}
+        \definecolor{primary20}{HTML}{D07070}
+        \definecolor{primary10}{HTML}{E0A0A0}
+        \else%
+        % 定义 csu-blue 风格（default）
+        \definecolor{primary}{HTML}{186199}
+        \definecolor{primary130}{HTML}{022A48}
+        \definecolor{primary120}{HTML}{053860}
+        \definecolor{primary110}{HTML}{0D4A79}
+        \definecolor{primary40}{HTML}{3572A0}
+        \definecolor{primary30}{HTML}{578DB6}
+        \definecolor{primary20}{HTML}{81AFD2}
+        \definecolor{primary10}{HTML}{B6D4EB}
+        \fi%
 \fi%
-
-% 定义 csu-blue 风格（default）
 
 \definecolor{alerted}{HTML}{BD3B08} % orange
 \definecolor{example}{RGB}{000, 134, 086} % green
@@ -83,38 +85,25 @@
 
 % Itemize item color (bullet)
 \setlist[itemize]{label=\color{primary}$\bullet$}
-%\setlist[itemize]{label=\color{primary}\textbullet}
 
-% Change alerted text color to alerted (default is nudarkorange)
 \setbeamercolor{alerted text}{fg=alerted}
 
 % Turn off shading for block title when rounded=true (by default, rounded = false)
 \makeatletter
 \pgfdeclareverticalshading[lower.bg,upper.bg]{bmb@transition}{200cm}{%
   color(0pt)=(lower.bg); color(4pt)=(lower.bg); color(4pt)=(upper.bg)}
-
-% Change block title background to primary and body bg to primary10
 \setbeamercolor{block title}{fg=white,bg=primary}
 \setbeamercolor{block body}{parent=normal text,fg=black,bg=primary10!55}
-
-% Change the alertblock title background to alerted text color
 \setbeamercolor{block title alerted}{fg=white,bg=alerted}
 \setbeamercolor{block body alerted}{fg=black,bg=alerted!10}
-
-% Change the exampleblock title background to greens
 \setbeamercolor{block title example}{fg=white,bg=example}
 \setbeamercolor{block body example}{fg=black,bg=example!10}
-
-% Change cption text color to primary
+\setbeamercolor{example text}{fg=example}
+\setbeamercolor{alerted text}{fg=alerted}
 \setbeamercolor{caption name}{fg=primary}
-
-% Change color of toc text to primary
 \setbeamercolor{section in toc}{fg=primary}
-
-% Ensure continuation text is white (for allowframebreaks)
 \setbeamercolor{frametitle continuation}{fg=primary}
-
-% Set framtitle color to primary
 \setbeamercolor{frametitle}{fg=primary}
+\setbeamercolor{description item}{fg=primary}
 
 \mode<all>

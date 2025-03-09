@@ -33,27 +33,27 @@
 
 % 使用 \setCJKmainfont 设置中文字体族（无衬线体和等宽字体）
 \setCJKmainfont[
-    Path = fonts/PingFang/,
+    Path = fonts/PingFangSC/,
     UprightFont = *-Light,
     ItalicFont = *-Thin,
-    BoldFont = *-Medium,
-    BoldItalicFont = *-Regular,
+    BoldFont = *-Regular,
+    BoldItalicFont = *-Medium,
     Extension = .ttf
 ]{PingFangSC}
 \setCJKsansfont[
-    Path = fonts/PingFang/,
+    Path = fonts/PingFangSC/,
     UprightFont = *-Light,
     ItalicFont = *-Thin,
-    BoldFont = *-Medium,
-    BoldItalicFont = *-Regular,
+    BoldFont = *-Regular,
+    BoldItalicFont = *-Medium,
     Extension = .ttf
 ]{PingFangSC}
 \setCJKmonofont[
-    Path = fonts/PingFang/,
+    Path = fonts/PingFangSC/,
     UprightFont = *-Light,
     ItalicFont = *-Thin,
-    BoldFont = *-Medium,
-    BoldItalicFont = *-Regular,
+    BoldFont = *-Regular,
+    BoldItalicFont = *-Medium,
     Extension = .ttf
 ]{PingFangSC}
 
@@ -73,5 +73,9 @@
     BoldItalicFont = *z,
     Extension =.ttf
 ]{consola}
+
+% 设置数学字体
+\usepackage[mathrm=sym]{unicode-math}
+\setmathfont{Fira Math}
 
 \mode<all>
