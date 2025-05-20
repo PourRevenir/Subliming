@@ -320,37 +320,94 @@
     \section{4 图表}
 
     \begin{frame}{表格 Tables}
+    %     \begin{table}
+    %         \caption{Largest cities in the world (source: Wikipedia)}
+    %         \label{tab:table1}
+    %         \begin{tabular}{@{} lr @{}}
+    %         \toprule
+    %         City & Population\\
+    %         \midrule
+    %         Mexico City & 20,116,842\\
+    %         Shanghai & 19,210,000\\
+    %         Peking & 15,796,450\\
+    %         Istanbul & 14,160,467\\
+    %         \bottomrule
+    %         \end{tabular}
+    %         \hspace*{1cm}
+    %           \setlength\extrarowheight{3pt}
+    %         \begin{tabular}{|lr|}
+    %         \hline
+    %         \rowcolor{primary}\color{background}City & \color{background}Population\\
+    %         \hline
+    %         Mexico City & 20,116,842\\
+    %         Shanghai & 19,210,000\\
+    %         Peking & 15,796,450\\
+    %         Istanbul & 14,160,467\\
+    %         \hline
+    %         \end{tabular}
+    %     \end{table}
         \begin{table}
-            \caption{Largest cities in the world (source: Wikipedia)}
-            \label{tab:table1}
-            \begin{tabular}{@{} lr @{}}
+        \caption{0号测线重力观测值}
+            \begin{tabular}{@{} ccccccccc @{}}
             \toprule
-            City & Population\\
+            Stn & $g_\text{obs}$(mGal) & Time & Stn & $g_\text{obs}$(mGal) & Time & Stn & $g_\text{obs}$(mGal) & Time \\
             \midrule
-            Mexico City & 20,116,842\\
-            Shanghai & 19,210,000\\
-            Peking & 15,796,450\\
-            Istanbul & 14,160,467\\
+            \alert{0$^\circ$53} & \example{182.78} & \example{13:55} &
+            52 & 182.77 & 14:00 & 
+            51 & 182.73 & 14:04 \\
+            50 & 182.92 & 14:07 &
+            49 & 183.05 & 14:10 &
+            48 & 183.19 & 14:15 \\
+            47 & 182.99 & 14:17 &
+            46 & 182.88 & 14:20 & 
+            45 & 182.89 & 14:22 \\
+            44 & 182.85 & 14:25 & 
+            43 & 182.91 & 14:27 &
+            42 & 182.95 & 14:29 \\
+            41 & 183.06 & 14:31 &
+            40 & 183.15 & 14:35 &
+            \alert{0$^\circ$39} & \example{183.13} & \example{14:37} \\
+            25 & 183.82 & 14:50 &
+            26 & 183.97 & 14:52 &
+            27 & 183.99 & 14:55 \\
+            28 & 183.96 & 14:59 &
+            29 & 184.25 & 15:01 &
+            30 & 184.48 & 15:05 \\
+            31 & 184.48 & 15:07 &
+            32 & 184.81 & 15:10 &
+            33 & 184.53 & 15:12 \\
+            34 & 184.33 & 15:14 &
+            35 & 184.17 & 15:16 &
+            36 & 184.03 & 15:19 \\
+            37 & 183.73 & 15:22 & 
+            38 & 183.38 & 15:25 &
+            \alert{0$^\circ$39} & \example{183.35} & \example{16:38} \\
+            \alert{0$^\circ$53} & \example{183.01} & \example{15:45} &
+              & & &
+              & & \\
             \bottomrule
-            \end{tabular}
-            \hspace*{1cm}
-              \setlength\extrarowheight{3pt}
-            \begin{tabular}{|lr|}
-            \hline
-            \rowcolor{primary}\color{background}City & \color{background}Population\\
-            \hline
-            Mexico City & 20,116,842\\
-            Shanghai & 19,210,000\\
-            Peking & 15,796,450\\
-            Istanbul & 14,160,467\\
-            \hline
             \end{tabular}
         \end{table}
     \end{frame}
 
     \begin{frame}{绘图 Plots}
-       
+    在绘图时，可以使用如下方式绘制更符合本主题风格的图件，以\texttt{\alert{python}}为例。
+       \inputminted[
+        style=manni,
+        bgcolor=gray!10,
+        framesep=2mm,
+        breaklines=true,
+        autogobble
+    ]{python}{code/plot_by_python.py}
     
+    \end{frame}
+
+    \begin{frame}{图片 Figures}
+        \begin{figure}
+        \centering          
+        \includegraphics[width=0.6\textwidth]{figures/plot_by_python.pdf}
+        \caption{散点图示例}
+        \end{figure}
     \end{frame}
 
     \section{5 参考文献}
