@@ -28,12 +28,12 @@
         
         \setblockstyle{metropolis}
         \begin{tbox}{default}
-            你也可以自定义这个主题！我在各个包中增加了中文注释，以便你更好地理解这个主题的设计。如果有任何问题或建议，欢迎向我们的 \href{https://github.com/PourRevenir/Subliming}{GitHub 仓库}提交 \href{https://github.com/PourRevenir/Subliming/issues}{issue} 或 \href{https://github.com/PourRevenir/Subliming/pulls}{pull request}！
+            \textit{你也可以自定义这个主题！我在各个包中增加了中文注释，以便你更好地理解这个主题的设计。如果有任何问题或建议，欢迎向我们的 \href{https://github.com/PourRevenir/Subliming}{GitHub 仓库}提交 \href{https://github.com/PourRevenir/Subliming/issues}{issue} 或 \href{https://github.com/PourRevenir/Subliming/pulls}{pull request}！}
         \end{tbox}
     \end{frame}
 
     \begin{frame}{目录 Contents}
-        \tableofcontents
+        \large\tableofcontents
     \end{frame}
 
     \section{1 选项}
@@ -89,7 +89,7 @@
                 \item 常规
                 \item \alert{醒目}
                 \item \example{例子}
-                \item \textit{斜体}
+                \item \textit{楷体}
                 \item \textbf{粗体}
                 \item \textbf{\textit{粗斜体}}
             \end{itemize}
@@ -109,10 +109,31 @@
 
     \end{frame}
 
+    \begin{frame}{数学公式 Equations}
+    你可以使用 tikzmark 来标记数学公式中的元素，这在制作教学课件和汇报演示中非常有用。
+
+    \vspace*{3em}
+
+    \begin{equation}
+        \vspace{\baselineskip}
+        \mathrm{Pr}[\tikzmarknode{x}{\colorbox{nubrightred!17}{$\mathcal{X}(\cdot)$}}\in \tikzmarknode{s}{\colorbox{nubrightteal!17}{$\mathcal{S}$}}] \leq e^\epsilon \cdot \mathrm{Pr}[\mathcal{X}(\cdot)\in \mathcal{S}]
+    \end{equation}
+
+    \begin{tikzpicture}[overlay,remember picture,>=stealth,nodes={align=left,inner ysep=1pt},<-]
+        % For "X"
+        \path (x.north) ++ (0,2em) node[anchor=south east,color=nudarkred!67] (scalep){\textbf{system state}};
+        \draw [color=nudarkred!87](x.north) |- ([xshift=-0.3ex,color=nudarkred]scalep.south west);
+        % For "S"
+        \path (s.south) ++ (0,-1.5em) node[anchor=north west,color=nudarkteal!67] (mean){\textbf{$\mathcal{S} \subseteq \mathrm{Range}(\mathcal{X})$}};
+        \draw [color=nudarkteal!57](s.south) |- ([xshift=-0.3ex,color=nudarkteal]mean.south east);
+    \end{tikzpicture}
+    
+    \end{frame}
+
     \begin{frame}{文本颜色 Text Color}
         你也可以自定义文本颜色。
         \\ ~ \\
-        默认的文本颜色为黑色，你可以通过命令\texttt{\textbackslash textcolor\{颜色\}\{文本\}}得到彩色文本，内置颜色包括：
+        默认的文本颜色为黑色，你可以通过命令\texttt{\textcolor{primary}{\textbackslash textcolor}\{颜色\}\{文本\}}得到彩色文本，内置颜色包括：
         \begin{columns}
             \column{0.3\textwidth}
             \begin{itemize}
@@ -159,7 +180,7 @@
     \end{frame}
 
     \begin{frame}[fragile]{可自定义颜色的 tcb 盒子 }
-        使用\texttt{tfacetbox} 可以自定义盒子的颜色。 这只适用于非原色（红、绿、蓝），因为不容易进行阴影处理。
+        使用\texttt{tfacetbox} 可以自定义盒子的颜色。 
         \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
             这是一个 tfacetbox 盒子. 可通过以下代码创建:
             \begin{minted}{latex}
@@ -179,16 +200,22 @@
 
         \setblockstyle{native}
         \centering
-        \begin{minipage}[b]{0.5\textwidth}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{block}{Default}
                 这是一个 Default 盒子
-            \end{block}
+            \end{block}    
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{alertblock}{Alert}
                 这是一个 Alert 盒子
-            \end{alertblock}
+            \end{alertblock}      
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{exampleblock}{Example}
                 这是一个 Example 盒子
-            \end{exampleblock} 
+            \end{exampleblock}       
         \end{minipage}
 
     \end{frame}
@@ -202,13 +229,19 @@
     则会得到无背景的盒子样式。
         \setblockstyle{nobackground}
         \centering
-        \begin{minipage}[b]{0.5\textwidth}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{block}{Default}
                 这是一个 Default 盒子
-            \end{block}
+            \end{block}    
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{alertblock}{Alert}
                 这是一个 Alert 盒子
-            \end{alertblock}
+            \end{alertblock}      
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{exampleblock}{Example}
                 这是一个 Example 盒子
             \end{exampleblock}       
@@ -225,13 +258,19 @@
 
         \setblockstyle{metropolis}
         \centering
-        \begin{minipage}[b]{0.5\textwidth}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{block}{Default}
                 这是一个 Default 盒子
-            \end{block}
+            \end{block}    
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{alertblock}{Alert}
                 这是一个 Alert 盒子
-            \end{alertblock}
+            \end{alertblock}      
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{exampleblock}{Example}
                 这是一个 Example 盒子
             \end{exampleblock}       
@@ -248,13 +287,19 @@
 
         \setblockstyle{emph}
         \centering
-        \begin{minipage}[b]{0.5\textwidth}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{block}{Default}
                 这是一个 Default 盒子
-            \end{block}
+            \end{block}    
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{alertblock}{Alert}
                 这是一个 Alert 盒子
-            \end{alertblock}
+            \end{alertblock}      
+        \end{minipage}
+        \hspace*{1em}
+        \begin{minipage}[b]{0.28\textwidth}
             \begin{exampleblock}{Example}
                 这是一个 Example 盒子
             \end{exampleblock}       
@@ -300,57 +345,14 @@
         \end{minipage}
     \end{frame}
 
-    \begin{frame}{盒子样式 Block Styles}
-        你也可以使用 Beamer 提供的默认文本盒子样式。
-        \begin{center}
-            \begin{minipage}[b]{0.5\textwidth}
-                \begin{block}{ Default }
-                    这里是一个 Default 盒子
-                \end{block}
-                \begin{alertblock}{Alert}
-                    这里是一个 Alert 盒子
-                \end{alertblock}
-                \begin{exampleblock}{Example}
-                    这里是一个 Example 盒子
-                \end{exampleblock}
-            \end{minipage}
-        \end{center}
-    \end{frame}
-
     \section{4 图表}
 
     \begin{frame}{表格 Tables}
-    %     \begin{table}
-    %         \caption{Largest cities in the world (source: Wikipedia)}
-    %         \label{tab:table1}
-    %         \begin{tabular}{@{} lr @{}}
-    %         \toprule
-    %         City & Population\\
-    %         \midrule
-    %         Mexico City & 20,116,842\\
-    %         Shanghai & 19,210,000\\
-    %         Peking & 15,796,450\\
-    %         Istanbul & 14,160,467\\
-    %         \bottomrule
-    %         \end{tabular}
-    %         \hspace*{1cm}
-    %           \setlength\extrarowheight{3pt}
-    %         \begin{tabular}{|lr|}
-    %         \hline
-    %         \rowcolor{primary}\color{background}City & \color{background}Population\\
-    %         \hline
-    %         Mexico City & 20,116,842\\
-    %         Shanghai & 19,210,000\\
-    %         Peking & 15,796,450\\
-    %         Istanbul & 14,160,467\\
-    %         \hline
-    %         \end{tabular}
-    %     \end{table}
         \begin{table}
         \caption{0号测线重力观测值}
             \begin{tabular}{@{} ccccccccc @{}}
             \toprule
-            Stn & $g_\text{obs}$(mGal) & Time & Stn & $g_\text{obs}$(mGal) & Time & Stn & $g_\text{obs}$(mGal) & Time \\
+             Stn & $g_\text{obs}$(mGal) & Time & Stn & $g_\text{obs}$(mGal) & Time & Stn & $g_\text{obs}$(mGal) & Time \\
             \midrule
             \alert{0$^\circ$53} & \example{182.78} & \example{13:55} &
             52 & 182.77 & 14:00 & 
@@ -391,15 +393,12 @@
     \end{frame}
 
     \begin{frame}{绘图 Plots}
-    在绘图时，可以使用如下方式绘制更符合本主题风格的图件，以\texttt{\alert{python}}为例。
-       \inputminted[
-        style=manni,
-        bgcolor=gray!10,
-        framesep=2mm,
-        breaklines=true,
-        autogobble
-    ]{python}{code/plot_by_python.py}
-    
+    在绘图时，可以使用如下方式绘制更符合本主题风格的图件，以 python 为例。
+
+        \begin{codebox}
+        \inputcode{python}{code/plot_by_python.py}
+        \end{codebox}
+
     \end{frame}
 
     \begin{frame}{图片 Figures}
@@ -408,6 +407,18 @@
         \includegraphics[width=0.6\textwidth]{figures/plot_by_python.pdf}
         \caption{散点图示例}
         \end{figure}
+    \end{frame}
+
+    \begin{frame}{电路 Circuit}
+        你可以使用 circuitikz 宏包来绘制电路图。
+
+        \begin{center}
+            \begin{circuitikz}[scale=1.0,european resistors,american voltages,american inductors]
+            \draw (0,3.5) to [V=$u_s$] (0,0);
+            \draw (0,3.5) to[L,l={$L$},i=$i_L$,v=$u_L$] (3,3.5) to[short] (6,3.5) to[C,l={$C$},i=$i_C$,v=$u_C$] (6,0) to[short] (0,0);
+            \draw (3,3.5) to[R,l={$G$},i=$i_G$,v=$u_G$] (3,0);
+            \end{circuitikz}
+        \end{center}
     \end{frame}
 
     \section{5 参考文献}

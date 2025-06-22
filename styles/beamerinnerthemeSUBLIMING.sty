@@ -116,8 +116,9 @@
         \raggedright\usebeamerfont{author}\insertauthor\ \ \insertinstitute%
     \end{beamercolorbox}
      \vskip0.2cm%
+
     \begin{beamercolorbox}[wd=12cm,leftskip=0cm,#1]{date}
-        \raggedright\usebeamerfont{author}\insertdate%
+ \raggedright\usebeamerfont{author}\insertdate%
     \end{beamercolorbox}
 \vfill
 }
@@ -263,6 +264,9 @@
 % 三种 tcb 盒子 talerts, texamples 以及 tfacets
 \newtcolorbox{tblock}[1]{
   enhanced,
+  drop fuzzy shadow,
+  boxrule=0pt,
+  fonttitle = \large\bfseries,
   underlay={
     \begin{tcbclipframe}
         \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -278,6 +282,9 @@
 }
 \newtcolorbox{talert}[1]{
   enhanced,
+  drop fuzzy shadow,
+  boxrule=0pt,
+  fonttitle = \large\bfseries,
   underlay={
     \begin{tcbclipframe}
         \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -293,6 +300,9 @@
 }
 \newtcolorbox{texample}[1]{
   enhanced,
+  drop fuzzy shadow,
+  boxrule=0pt,
+  fonttitle = \large\bfseries,
   underlay={
     \begin{tcbclipframe}
         \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -309,6 +319,9 @@
 % 含颜色双选项 facet block
 \newtcolorbox{tfacetbox}[2][primary]{
   enhanced,
+  drop fuzzy shadow,
+  boxrule=0pt,
+  fonttitle = \large\bfseries,
   underlay={
     \begin{tcbclipframe}
         \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
@@ -327,6 +340,40 @@
 \renewenvironment{example}[1]{
 	\textcolor{primary40}{#1}
 }
+
+% codebox 环境
+\newtcolorbox{codebox}[1][]{
+    enhanced,
+    drop fuzzy shadow,
+    fonttitle=\strut\bfseries,
+    boxrule=0pt,
+    % breakable,
+    overlay={\begin{tcbclipinterior}\fill[darkgray!20!white] (frame.south west) rectangle ([xshift=6mm]frame.north west);\end{tcbclipinterior}},
+    skin=bicolor,
+    collower=white,
+    colbacklower=darkgray,
+    title=#1
+}
+
+\newenvironment{code}[2][]{
+        \VerbatimEnvironment
+        \begin{minted}[
+        linenos,            
+        breaklines,         
+        autogobble, 
+        style=manni,        
+        xleftmargin=3.75mm,
+        ]{#2}}
+    {\end{minted}}
+
+\newcommand{\inputcode}[2]{\inputminted[
+        linenos,            
+        breaklines,         
+        autogobble,  
+        style=manni,       
+        xleftmargin=3.75mm,
+    ]{#1}{#2}}
+
 % ------------------------------------------------
 
 % 标准页 Standout Frame
