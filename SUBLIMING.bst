@@ -1456,16 +1456,32 @@ FUNCTION {calc.short.authors}
  'short.list :=
 }
 
+% FUNCTION {calc.label}
+% { calc.short.authors
+%  short.list
+%  ", "
+%  *
+%  year duplicate$ empty$
+%  short.list key field.or.null = or
+%     { pop$ "" }
+%     'skip$
+%  if$
+%  *
+%  'label :=
+% }
+
 FUNCTION {calc.label}
 { calc.short.authors
  short.list
- ", "
+ "("
  *
  year duplicate$ empty$
  short.list key field.or.null = or
     { pop$ "" }
     'skip$
  if$
+ *
+ ")"
  *
  'label :=
 }

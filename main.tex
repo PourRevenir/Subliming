@@ -4,7 +4,7 @@
 \title{Subliming 主题 Beamer 示例}
 \author{杨曜堃}
 \institute{地球科学与信息物理学院}
-\date{February 19, 2025}
+\date{\today}
 
 % 添加封面上的大学校标，这里使用的是白色中南大学校标，并设置透明度为 30%
 % 如果你想使用校徽，可以在 beamerinnerthemeSUBLIMING.sty 文件中修改，找到对应的注释即可
@@ -95,18 +95,18 @@
             \end{itemize}
         \end{columns}
         \vspace*{1em}
-        参考文献引用：\cite{Mosher2013} \cite{Asgharzadeh2008} 
+        参考文献引用样式：\cite{Mosher2013}，\cite{Asgharzadeh2008} 
     \end{frame}
 
     \begin{frame}{数学字体 Math Fonts}
-        使用了 \href{https://github.com/firamath/firamath}{Fira Math} 字体作为数学字体，这是一个开源的数学字体，适用于数学公式。需要在 Texlive 中安装， 可使用 \texttt{\alert{tlmgr} install firamath} 命令。
-
+        默认使用 unicode-math 作为数学字体。
         \begin{equation}
             \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
         \end{equation}
 
+        {\itshape（可选）}也可以使用 \href{https://github.com/firamath/firamath}{Fira Math} 字体作为数学字体，这是一个开源的数学字体，适用于数学公式。需要在 Texlive 中安装， 可使用 \texttt{\alert{tlmgr} install firamath} 命令。
+        \\~\\
         如果需要在 MixTex 中安装，则使用 \texttt{\alert{mpm} --admin --install=firamath} 命令。
-
     \end{frame}
 
     \begin{frame}{数学公式 Equations}
@@ -183,7 +183,8 @@
         使用\texttt{tfacetbox} 可以自定义盒子的颜色。 
         \begin{tfacetbox}[nudarkyellow]{自定义颜色 Facet 盒子}
             这是一个 tfacetbox 盒子. 可通过以下代码创建:
-            \begin{minted}{latex}
+            \begin{minted}[style=manni]{latex}
+
     \begin{tfacetbox}[自定义的颜色]{盒子标题}
         这是一个 tfacetbox 盒子...
     \end{tfacetbox}
@@ -336,7 +337,7 @@
         \end{minipage}
         \hspace{0.7cm}
         \begin{minipage}[b]{0.35\textwidth}
-            \begin{minted}{latex}
+            \begin{minted}[style=manni]{latex}
 \setblockstyle{盒子样式}
 \begin{tbox}{盒子颜色}
     文本内容
@@ -431,10 +432,6 @@
         参考文献列表样式如下
         \bibliographystyle{SUBLIMING} 
         \bibliography{references}
-    \end{frame}
-
-    \begin{frame}{标准页 Standard Page}
-        你可以通过 \texttt{\textcolor{primary}{\textbackslash standout}\{文本\}} 命令创建一个标准页。文本内容将居中显示。
     \end{frame}
 
     \standout{Questions \& Answers}

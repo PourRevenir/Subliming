@@ -196,8 +196,8 @@
 % Bibliography
 \setbeamercolor*{bibliography entry author}{fg=primary}
 \makeatletter
-\def\@cite#1#2{{\footnotesize \textcolor{primary}{[\textbf{\textit{#1\if@tempswa , #2\fi}}]}}}
-\def\@biblabel#1{[\textbf{#1}]}
+\def\@cite#1#2{{\textcolor{primary}{#1\if@tempswa , #2\fi}}}
+\def\@biblabel#1{[{#1}]}
 \makeatother
 
 \mode<all>

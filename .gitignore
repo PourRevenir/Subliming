@@ -8,6 +8,7 @@
 *.lot
 *.synctex.gz
 *.synctex(.)
+*.synctex(busy)
 *.fdb_latexmk
 *.fls
 *.run.xml
@@ -20,4 +21,5 @@
 *.ps
 *.thm
 *.json
-_minted-main/
+_minted-main/*
+_minted/*
